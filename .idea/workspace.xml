@@ -5,13 +5,35 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e5b23b7e-c1f9-46f2-83cc-4dc358227f4a" name="Changes" comment="First Push">
-      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/project2JavaFX/Customer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/project2JavaFX/SignUpController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/example/project2JavaFX/Customers.dat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/example/project2JavaFX/icons/cancel-svgrepo-com.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/example/project2JavaFX/icons/cancel-svgrepo-com.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/example/project2JavaFX/icons/checked-svgrepo-com.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/example/project2JavaFX/icons/checked-svgrepo-com.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/example/project2JavaFX/icons/options-svgrepo-com.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/example/project2JavaFX/sign-up-view.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/project2/HelloApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/project2JavaFX/COSApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/project2/HelloController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/project2JavaFX/LogOnController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/project2/hello-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/project2JavaFX/log-on-view.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -30,10 +52,35 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "WebServerToolWindowFactoryState": "false"
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "C:/Users/jarod/IdeaProjects/project2/src/main/resources/com/example/project2JavaFX/icons"
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="com.example.project2JavaFX" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\jarod\IdeaProjects\project2\src\main\resources\com\example\project2JavaFX\icons" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\jarod\IdeaProjects\project2\src\main\resources\com\example\project2JavaFX\icons" />
+    </key>
+  </component>
   <component name="RunManager">
+    <configuration name="com.example.project2JavaFX.COSApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.example.project2JavaFX.COSApplication" />
+      <module name="project2JavaFX" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.example.project2JavaFX.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration default="true" type="JetRunConfigurationType">
       <module name="project2JavaFX" />
       <method v="2">
@@ -47,6 +94,11 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.com.example.project2JavaFX.COSApplication" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -56,7 +108,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1650846728183</updated>
-      <workItem from="1650846729364" duration="351000" />
+      <workItem from="1650846729364" duration="22180000" />
     </task>
     <task id="LOCAL-00001" summary="First Push">
       <created>1650846981134</created>
@@ -65,7 +117,14 @@
       <option name="project" value="LOCAL" />
       <updated>1650846981134</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="First Push">
+      <created>1650847084496</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1650847084496</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
