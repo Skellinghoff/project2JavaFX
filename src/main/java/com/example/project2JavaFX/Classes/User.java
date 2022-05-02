@@ -1,4 +1,4 @@
-package com.example.project2JavaFX;
+package com.example.project2JavaFX.Classes;
 
 import java.io.Serializable;
 

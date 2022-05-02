@@ -1,6 +1,6 @@
 package com.example.project2JavaFX;
 
-import javafx.event.ActionEvent;
+import com.example.project2JavaFX.Classes.*;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -17,9 +17,12 @@ import java.util.Objects;
 import java.util.ResourceBundle;
 
 public class SignUpStepThreeController implements Initializable {
-    @FXML Button signUpButton;
-    @FXML TextField answerTextField;
-    @FXML ComboBox<String> questionComboBox = new ComboBox<>();
+    @FXML
+    Button signUpButton;
+    @FXML
+    TextField answerTextField;
+    @FXML
+    ComboBox<String> questionComboBox = new ComboBox<>();
 
 
     @Override
@@ -35,12 +38,14 @@ public class SignUpStepThreeController implements Initializable {
         );
     }
 
-    @FXML protected void onKeyTypedTextField() {
+    @FXML
+    protected void onKeyTypedTextField() {
         System.out.println(questionComboBox.getValue());
         signUpButton.setDisable(answerTextField.getText().isBlank());
     }
 
-    @FXML protected void onSignUpButton() throws IOException {
+    @FXML
+    protected void onSignUpButton() throws IOException {
         CustomerHolder holder = CustomerHolder.getInstance();
         User user = holder.getUser();
         PersonalDetails personalDetails = holder.getPersonDetails();
@@ -52,9 +57,10 @@ public class SignUpStepThreeController implements Initializable {
 
     }
 
-    @FXML public void onCancelButton(ActionEvent event) throws IOException {
+    @FXML
+    public void onCancelButton() throws IOException {
         Parent parent = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("log-on-view.fxml")));
-        Stage stage = (Stage) answerTextField.getScene().getWindow();
+        Stage stage = (Stage) signUpButton.getScene().getWindow();
         Scene scene = new Scene(parent);
         stage.setScene(scene);
         stage.show();

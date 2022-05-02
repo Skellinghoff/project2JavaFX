@@ -47,12 +47,12 @@
          <Tooltip autoHide="true" text="Empty Tooltip" />
       </tooltip></PasswordField>
     <ImageView fx:id="idIcon" fitHeight="28.0" fitWidth="37.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
-        <Image url="@icons/cancel-svgrepo-com.png" />
+        <Image url="@../../../../java/com/example/project2JavaFX/Icons/cancel.png" />
     </ImageView>
     <ImageView fx:id="passIcon" fitHeight="28.0" fitWidth="37.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
-        <Image url="@icons/cancel-svgrepo-com.png" />
+        <Image url="@../../../../java/com/example/project2JavaFX/Icons/checked.png" />
     </ImageView>
     <ImageView fx:id="confirmPassIcon" fitHeight="28.0" fitWidth="37.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
-        <Image url="@icons/cancel-svgrepo-com.png" />
+        <Image url="@../../../../java/com/example/project2JavaFX/Icons/options.png" />
     </ImageView>
 </GridPane>

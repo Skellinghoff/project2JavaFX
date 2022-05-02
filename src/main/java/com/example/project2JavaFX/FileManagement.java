@@ -1,36 +1,42 @@
 package com.example.project2JavaFX;
 
+import com.example.project2JavaFX.Classes.BankAccount;
+import com.example.project2JavaFX.Classes.Customer;
+import com.example.project2JavaFX.Classes.PersonalDetails;
+import com.example.project2JavaFX.Classes.User;
 import com.example.project2JavaFX.Exceptions.NegativeStartingBalanceException;
 
 import java.io.*;
+import java.lang.reflect.InvocationTargetException;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Random;
 
 public class FileManagement {
-    public static ArrayList<Customer> getCustomers() throws IOException, ClassNotFoundException{
-        FileInputStream inStream = new FileInputStream("src/main/resources/com/example/project2JavaFX/Customers.dat");
+    public static Customer[] getCustomers() throws IOException, ClassNotFoundException, InvocationTargetException {
+        FileInputStream inStream = new FileInputStream("Customers.dat");
 
         ObjectInputStream objectInputFile = new ObjectInputStream(inStream);
 
         ArrayList<Customer> customers = new ArrayList<>();
 
-        Object o;
-
-        while ((o = objectInputFile.readObject()) != null) {
-            if (o instanceof Customer customer) {
+        while (true) {
+            try {
+                Customer customer = (Customer) objectInputFile.readObject();
                 customers.add(customer);
-//                System.out.println(customer.getUser().getId());
+            } catch (EOFException e) {
+                System.out.println("EOF Reached.");
+                break;
             }
         }
 
         // Close the file.
         objectInputFile.close();
-        inStream.close();
         System.out.println("The serialized objects were read from the Customers.dat file.");
-        return customers;
+        return customers.toArray(new Customer[0]);
     }
-    public static void setExampleCustomers() throws IOException, ClassNotFoundException, NegativeStartingBalanceException {
+
+    public static void setExampleCustomers() throws IOException, NegativeStartingBalanceException {
 
         DecimalFormat dfMoney = new DecimalFormat("0.00");
 
@@ -76,10 +82,10 @@ public class FileManagement {
                         new PersonalDetails("customer9", "customer9, 9999, 9999, 9999", "What was your childhood nickname?", "customer9"),
                         new BankAccount(dfMoney.format(new Random().nextDouble(1000, 1000000)), "9999999999999999")),
         };
-        
+
 
         // Create the stream objects.
-        FileOutputStream outStream = new FileOutputStream("src/main/resources/com/example/project2JavaFX/Customers.dat");
+        FileOutputStream outStream = new FileOutputStream("Customers.dat");
         ObjectOutputStream objectOutputFile = new ObjectOutputStream(outStream);
 
         // Write the serialized objects to the file.
@@ -91,14 +97,45 @@ public class FileManagement {
         objectOutputFile.close();
 
         System.out.println("The serialized objects were written to the Customers.dat file.");
-    
+
     }
 
     public static void addCustomer(Customer customer) throws IOException {
-        FileOutputStream outStream = new FileOutputStream("src/main/resources/com/example/project2JavaFX/Customers.dat");
-        ObjectOutputStream objectOutputFile = new ObjectOutputStream(outStream);
-        objectOutputFile.writeObject(customer);
-        objectOutputFile.close();
+        ArrayList<Customer> customerArrayList = getCustomersList();
+        customerArrayList.add(customer);
+        Customer[] customers = customerArrayList.toArray(new Customer[0]);
 
+        FileOutputStream outStream = new FileOutputStream("Customers.dat");
+        ObjectOutputStream objectOutputFile = new ObjectOutputStream(outStream);
+
+        for (Customer c : customers) {
+            objectOutputFile.writeObject(c);
+        }
+
+        objectOutputFile.close();
+        System.out.println("Customer added.");
+    }
+
+    private static ArrayList<Customer> getCustomersList() throws IOException {
+        FileInputStream inStream = new FileInputStream("Customers.dat");
+        ObjectInputStream objectInputFile = new ObjectInputStream(inStream);
+        ArrayList<Customer> customers = new ArrayList<>();
+
+        while (true) {
+            try {
+                Customer customer = (Customer) objectInputFile.readObject();
+                customers.add(customer);
+            } catch (EOFException e) {
+                System.out.println("EOF Reached.");
+                break;
+            } catch (ClassNotFoundException e) {
+                throw new RuntimeException(e);
+            }
+        }
+
+        // Close the file.
+        objectInputFile.close();
+        System.out.println("The serialized objects were read from the Customers.dat file.");
+        return customers;
     }
 }

@@ -1,4 +1,4 @@
-package com.example.project2JavaFX;
+package com.example.project2JavaFX.Classes;
 
 import java.io.Serializable;
 
@@ -8,7 +8,8 @@ public class PersonalDetails implements Serializable {
     private String securityQuestion;
     private String securityAnswer;
 
-    public PersonalDetails() {}
+    public PersonalDetails() {
+    }
 
     public PersonalDetails(String name, String address, String securityQuestion, String securityAnswer) {
         this.name = name;

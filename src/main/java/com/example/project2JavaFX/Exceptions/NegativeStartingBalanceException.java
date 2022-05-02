@@ -7,22 +7,23 @@ package com.example.project2JavaFX.Exceptions;
  */
 
 public class NegativeStartingBalanceException extends Exception {
-   /**
-    * This constructor uses a generic
-    * error message.
-    */
+    /**
+     * This constructor uses a generic
+     * error message.
+     */
 
-   public NegativeStartingBalanceException() {
-      super("Error: Negative starting balance");
-   }
+    public NegativeStartingBalanceException() {
+        super("Error: Negative starting balance");
+    }
 
-   /**
-    * This constructor specifies the bad starting
-    * balance in the error message.
-    * @param amount The bad starting balance.
-    */
+    /**
+     * This constructor specifies the bad starting
+     * balance in the error message.
+     *
+     * @param amount The bad starting balance.
+     */
 
-   public NegativeStartingBalanceException(double amount) {
-      super(String.format("Error: Negative starting balance: %.2f", amount));
-   }
+    public NegativeStartingBalanceException(double amount) {
+        super(String.format("Error: Negative starting balance: %.2f", amount));
+    }
 }

@@ -1,5 +1,8 @@
 package com.example.project2JavaFX;
 
+import com.example.project2JavaFX.Classes.Customer;
+import com.example.project2JavaFX.Classes.CustomerHolder;
+import com.example.project2JavaFX.Classes.User;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -16,19 +19,25 @@ import javafx.stage.Stage;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
 public class SignUpStepOneController implements Initializable {
     public PasswordField confirmPassPasswordField;
-    @FXML private TextField idTextField;
-    @FXML private ImageView idIcon;
-    @FXML private PasswordField passPasswordField;
-    @FXML private ImageView passIcon;
-    @FXML private ImageView confirmPassIcon;
-    @FXML private Button nextButton;
+    @FXML
+    private TextField idTextField;
+    @FXML
+    private ImageView idIcon;
+    @FXML
+    private PasswordField passPasswordField;
+    @FXML
+    private ImageView passIcon;
+    @FXML
+    private ImageView confirmPassIcon;
+    @FXML
+    private Button nextButton;
     private Image cancelImage;
     private Image checkedImage;
     private Image optionsImage;
@@ -37,22 +46,22 @@ public class SignUpStepOneController implements Initializable {
     private boolean isIDValid = false;
     private String passString = "";
     private String confirmPassString = "";
-    private ArrayList<Customer> customers;
+    private Customer[] customers;
 
 
-
-    @Override public void initialize(URL url, ResourceBundle resourceBundle) {
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
         try {
             customers = FileManagement.getCustomers();
-        } catch (IOException | ClassNotFoundException e) {
+        } catch (IOException | ClassNotFoundException | InvocationTargetException e) {
             customers = null;
             throw new RuntimeException(e);
         }
         System.out.println("Sign Up Controller Initialized");
         try {
-            FileInputStream cancelInputStream = new FileInputStream("src/main/resources/com/example/project2JavaFX/icons/cancel-svgrepo-com.png");
-            FileInputStream checkedInputStream = new FileInputStream("src/main/resources/com/example/project2JavaFX/icons/checked-svgrepo-com.png");
-            FileInputStream optionsInputStream = new FileInputStream("src/main/resources/com/example/project2JavaFX/icons/options-svgrepo-com.png");
+            FileInputStream cancelInputStream = new FileInputStream("src/main/java/com/example/project2JavaFX/Icons/cancel.png");
+            FileInputStream checkedInputStream = new FileInputStream("src/main/java/com/example/project2JavaFX/Icons/checked.png");
+            FileInputStream optionsInputStream = new FileInputStream("src/main/java/com/example/project2JavaFX/Icons/options.png");
             cancelImage = new Image(cancelInputStream, idIcon.getFitWidth(), 0, true, true);
             checkedImage = new Image(checkedInputStream, 37, 0, true, true);
             optionsImage = new Image(optionsInputStream, 37, 0, true, true);
@@ -66,7 +75,9 @@ public class SignUpStepOneController implements Initializable {
         nextButton.setDisable(true);
 
     }
-    @FXML protected void onKeyTypedTextField(KeyEvent event) {
+
+    @FXML
+    protected void onKeyTypedTextField(KeyEvent event) {
         TextField n = (TextField) event.getSource();
         String source = n.getId();
         String content = n.getText();
@@ -95,7 +106,9 @@ public class SignUpStepOneController implements Initializable {
         System.out.println(content);
         enableNextButton();
     }
-    @FXML protected void onKeyTypePasswordFields(KeyEvent event) {
+
+    @FXML
+    protected void onKeyTypePasswordFields(KeyEvent event) {
         PasswordField n = (PasswordField) event.getSource();
         String source = n.getId();
         String content = n.getText();
@@ -181,7 +194,8 @@ public class SignUpStepOneController implements Initializable {
         return hasDigit && hasUpper && hasSpecialChar;
     }
 
-    @FXML protected void onCancelButton() throws IOException {
+    @FXML
+    protected void onCancelButton() throws IOException {
         Parent parent = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("log-on-view.fxml")));
         Stage stage = (Stage) nextButton.getScene().getWindow();
         Scene scene = new Scene(parent);

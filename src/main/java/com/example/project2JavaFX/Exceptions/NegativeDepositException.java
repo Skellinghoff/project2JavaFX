@@ -19,6 +19,7 @@ public class NegativeDepositException extends Exception {
     /**
      * This constructor specifies the bad deposit
      * in the error message
+     *
      * @param amount The bad deposit amount
      */
 

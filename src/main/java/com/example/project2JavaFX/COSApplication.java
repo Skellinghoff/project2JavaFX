@@ -20,10 +20,10 @@ public class COSApplication extends Application {
         primaryStage.show();
     }
 
-    public static void main(String[] args)  {
+    public static void main(String[] args) {
         try {
             FileManagement.setExampleCustomers();
-        } catch (IOException | ClassNotFoundException | NegativeStartingBalanceException e) {
+        } catch (IOException | NegativeStartingBalanceException e) {
             throw new RuntimeException(e);
         }
         launch();

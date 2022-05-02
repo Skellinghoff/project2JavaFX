@@ -1,4 +1,4 @@
-package com.example.project2JavaFX;
+package com.example.project2JavaFX.Classes;
 
 import java.io.Serializable;
 
@@ -18,7 +18,11 @@ public class Customer implements Serializable {
         this.user = user;
     }
 
-    public Customer(){}
+    public Customer() {
+        this.user = null;
+        this.personalDetails = null;
+        this.bankAccount = null;
+    }
 
     public User getUser() {
         return user;

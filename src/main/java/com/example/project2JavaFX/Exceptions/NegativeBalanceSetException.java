@@ -18,6 +18,7 @@ public class NegativeBalanceSetException extends Exception {
     /**
      * This constructor specifies the bad set
      * balance in the error message.
+     *
      * @param amount The bad set balance.
      */
 

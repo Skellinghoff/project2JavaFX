@@ -1,5 +1,9 @@
 package com.example.project2JavaFX;
 
+import com.example.project2JavaFX.Classes.BankAccount;
+import com.example.project2JavaFX.Classes.CustomerHolder;
+import com.example.project2JavaFX.Classes.PersonalDetails;
+import com.example.project2JavaFX.Classes.User;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -16,12 +20,17 @@ import java.util.Objects;
 import java.util.ResourceBundle;
 
 public class SignUpStepTwoController implements Initializable {
-    @FXML Button nextButton;
-    @FXML TextField nameTextField;
-    @FXML TextField addressTextField;
-    @FXML TextField CCTextField;
+    @FXML
+    Button nextButton;
+    @FXML
+    TextField nameTextField;
+    @FXML
+    TextField addressTextField;
+    @FXML
+    TextField CCTextField;
 
     private User user;
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         CustomerHolder holder = CustomerHolder.getInstance();
@@ -31,7 +40,8 @@ public class SignUpStepTwoController implements Initializable {
     }
 
 
-    @FXML protected void onNextButton() throws IOException {
+    @FXML
+    protected void onNextButton() throws IOException {
         CustomerHolder holder = CustomerHolder.getInstance();
         PersonalDetails personalDetails = new PersonalDetails(nameTextField.getText(), addressTextField.getText());
         holder.setBankAccount(new BankAccount(CCTextField.getText()));
@@ -44,7 +54,8 @@ public class SignUpStepTwoController implements Initializable {
         stage.show();
     }
 
-    @FXML protected void onKeyTypedTextField(KeyEvent event) {
+    @FXML
+    protected void onKeyTypedTextField(KeyEvent event) {
         TextField n = (TextField) event.getSource();
         String source = n.getId();
         String content = n.getText();
@@ -57,7 +68,8 @@ public class SignUpStepTwoController implements Initializable {
         nextButton.setDisable(nameTextField.getText().isBlank() || addressTextField.getText().isBlank() || CCTextField.getText().isBlank());
     }
 
-    @FXML protected void onCancelButton() throws IOException {
+    @FXML
+    protected void onCancelButton() throws IOException {
         Parent parent = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("log-on-view.fxml")));
         Stage stage = (Stage) nextButton.getScene().getWindow();
         Scene scene = new Scene(parent);

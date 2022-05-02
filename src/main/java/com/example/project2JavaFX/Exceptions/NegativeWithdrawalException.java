@@ -19,6 +19,7 @@ public class NegativeWithdrawalException extends Exception {
     /**
      * This constructor specifies the bad withdrawal
      * in the error message
+     *
      * @param amount The bad withdrawal amount
      */
 

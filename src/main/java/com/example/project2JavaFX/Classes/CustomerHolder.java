@@ -1,4 +1,4 @@
-package com.example.project2JavaFX;
+package com.example.project2JavaFX.Classes;
 
 public final class CustomerHolder {
 
@@ -8,7 +8,8 @@ public final class CustomerHolder {
     private BankAccount bankAccount;
     private final static CustomerHolder INSTANCE = new CustomerHolder();
 
-    private CustomerHolder() {}
+    private CustomerHolder() {
+    }
 
     public static CustomerHolder getInstance() {
         return INSTANCE;
