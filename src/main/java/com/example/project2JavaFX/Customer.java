@@ -1,49 +1,46 @@
 package com.example.project2JavaFX;
 
-public class Customer {
-    private final String id;
-    private final String password;
-    private final String name;
-    private final String address;
-    private final String creditCardNumber;
-    private final String securityQuestion;
-    private final String securityAnswer;
+import java.io.Serializable;
 
-    public Customer(String id, String password, String name, String address, String creditCardNumber, String securityQuestion, String securityAnswer) {
-        this.id = id;
-        this.password = password;
-        this.name = name;
-        this.address = address;
-        this.creditCardNumber = creditCardNumber;
-        this.securityQuestion = securityQuestion;
-        this.securityAnswer = securityAnswer;
+public class Customer implements Serializable {
+    private User user;
+    private PersonalDetails personalDetails;
+    private BankAccount bankAccount;
+
+    public Customer(User user, PersonalDetails personalDetails, BankAccount bankAccount) {
+        this.user = user;
+        this.personalDetails = personalDetails;
+        this.bankAccount = bankAccount;
+
     }
 
-    public String getId() {
-        return id;
+    public Customer(User user) {
+        this.user = user;
     }
 
-    public String getPassword() {
-        return password;
+    public Customer(){}
+
+    public User getUser() {
+        return user;
     }
 
-    public String getName() {
-        return name;
+    public void setUser(User user) {
+        this.user = user;
     }
 
-    public String getAddress() {
-        return address;
+    public PersonalDetails getPersonDetails() {
+        return personalDetails;
     }
 
-    public String getCreditCardNumber() {
-        return creditCardNumber;
+    public void setPersonDetails(PersonalDetails personalDetails) {
+        this.personalDetails = personalDetails;
     }
 
-    public String getSecurityQuestion() {
-        return securityQuestion;
+    public BankAccount getBankAccount() {
+        return bankAccount;
     }
 
-    public String getSecurityAnswer() {
-        return securityAnswer;
+    public void setBankAccount(BankAccount bankAccount) {
+        this.bankAccount = bankAccount;
     }
 }

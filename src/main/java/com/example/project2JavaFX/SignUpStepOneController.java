@@ -1,61 +1,54 @@
 package com.example.project2JavaFX;
 
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.control.*;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.PasswordField;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
+import javafx.stage.Stage;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
-public class SignUpController implements Initializable {
+public class SignUpStepOneController implements Initializable {
+    public PasswordField confirmPassPasswordField;
     @FXML private TextField idTextField;
     @FXML private ImageView idIcon;
     @FXML private PasswordField passPasswordField;
     @FXML private ImageView passIcon;
-    @FXML private PasswordField confirmPassPasswordField;
     @FXML private ImageView confirmPassIcon;
-    @FXML private TextField nameTextField;
-    @FXML private TextField addressTextField;
-    @FXML private TextField creditCardTextField;
-    @FXML private TextField securityAnswerTextField;
-    @FXML private ComboBox<String> securityQuestionsComboBox = new ComboBox<>();
-    @FXML private Button signUpButton;
+    @FXML private Button nextButton;
     private Image cancelImage;
     private Image checkedImage;
     private Image optionsImage;
-    private boolean isIDEmpty = true;
-    private boolean isPassEmpty = true;
     private boolean isConfirmPassEmpty = true;
-    private boolean isNameEmpty = true;
-    private boolean isAddressEmpty = true;
-    private boolean isCCEmpty = true;
-    private boolean isSecurityAnswerEmpty = true;
     private boolean arePasswordsValid = false;
+    private boolean isIDValid = false;
     private String passString = "";
     private String confirmPassString = "";
-
+    private ArrayList<Customer> customers;
 
 
 
     @Override public void initialize(URL url, ResourceBundle resourceBundle) {
+        try {
+            customers = FileManagement.getCustomers();
+        } catch (IOException | ClassNotFoundException e) {
+            customers = null;
+            throw new RuntimeException(e);
+        }
         System.out.println("Sign Up Controller Initialized");
-        ObservableList<String> questions =
-                FXCollections.observableArrayList(
-                        "What city were you born in?",
-                        "What is your oldest sibling’s middle name?",
-                        "What was the first concert you attended?",
-                        "What was the make and model of your first car?",
-                        "In what city or town did your parents meet?"
-                );
-        securityQuestionsComboBox.getItems().addAll(questions);
         try {
             FileInputStream cancelInputStream = new FileInputStream("src/main/resources/com/example/project2JavaFX/icons/cancel-svgrepo-com.png");
             FileInputStream checkedInputStream = new FileInputStream("src/main/resources/com/example/project2JavaFX/icons/checked-svgrepo-com.png");
@@ -70,14 +63,7 @@ public class SignUpController implements Initializable {
         idIcon.setOpacity(0);
         passIcon.setOpacity(0);
         confirmPassIcon.setOpacity(0);
-        signUpButton.setDisable(true);
-        passPasswordField.setDisable(true);
-        confirmPassPasswordField.setDisable(true);
-        nameTextField.setDisable(true);
-        addressTextField.setDisable(true);
-        creditCardTextField.setDisable(true);
-        securityQuestionsComboBox.setDisable(true);
-        securityAnswerTextField.setDisable(true);
+        nextButton.setDisable(true);
 
     }
     @FXML protected void onKeyTypedTextField(KeyEvent event) {
@@ -85,18 +71,29 @@ public class SignUpController implements Initializable {
         String source = n.getId();
         String content = n.getText();
 
-        switch (source) {
-            case "idTextField" -> {
-                isIDEmpty = content.isBlank();
+        if ("idTextField".equals(source)) {
+            if (content.isBlank()) {
+                setIcon(idIcon, optionsImage, 1);
             }
-            case "nameTextField" -> isNameEmpty = content.isBlank();
-            case "addressTextField" -> isAddressEmpty = content.isBlank();
-            case "creditCardTextField" -> isCCEmpty = content.isBlank();
-            case "securityAnswer" -> isSecurityAnswerEmpty = content.isBlank();
+            if (customers != null) {
+                for (Customer c : customers) {
+                    setIcon(idIcon, optionsImage, 1);
+                    String id = c.getUser().getId();
+                    System.out.println(id);
+                    if (content.equals(id)) {
+                        setIcon(idIcon, cancelImage, 1);
+                        isIDValid = false;
+                        break;
+                    } else {
+                        setIcon(idIcon, checkedImage, 1);
+                        isIDValid = true;
+                    }
+                }
+            }
         }
 
         System.out.println(content);
-        enableSignUpButton();
+        enableNextButton();
     }
     @FXML protected void onKeyTypePasswordFields(KeyEvent event) {
         PasswordField n = (PasswordField) event.getSource();
@@ -105,16 +102,14 @@ public class SignUpController implements Initializable {
 
         switch (source) {
             case "passPasswordField" -> {
-                isPassEmpty = content.isBlank();
+                boolean isPassEmpty = content.isBlank();
                 passString = content;
                 if (isPasswordValid(content)) {
-                    passIcon.setOpacity(1);
-                    passIcon.setImage(checkedImage);
+                    setIcon(passIcon, checkedImage, 1);
                 } else if (isPassEmpty) {
-                    passIcon.setOpacity(0);
+                    setIcon(passIcon, checkedImage, 0);
                 } else if (!isPasswordValid(content)) {
-                    passIcon.setOpacity(1);
-                    passIcon.setImage(cancelImage);
+                    setIcon(passIcon, cancelImage, 1);
                 }
             }
             case "confirmPassPasswordField" -> {
@@ -124,25 +119,41 @@ public class SignUpController implements Initializable {
             }
         }
 
-        if (!isPassEmpty && !isConfirmPassEmpty) {
+        if (isPasswordValid(content) && !isConfirmPassEmpty) {
             if (Objects.equals(passString, confirmPassString)) {
-                confirmPassIcon.setOpacity(1);
-                confirmPassIcon.setImage(checkedImage);
+                setIcon(confirmPassIcon, checkedImage, 1);
                 arePasswordsValid = true;
             } else {
-                confirmPassIcon.setOpacity(1);
-                confirmPassIcon.setImage(cancelImage);
+                setIcon(confirmPassIcon, cancelImage, 1);
                 arePasswordsValid = false;
             }
         } else {
             arePasswordsValid = false;
-            confirmPassIcon.setOpacity(0);
+            setIcon(confirmPassIcon, cancelImage, 1);
         }
-        enableSignUpButton();
+        enableNextButton();
     }
 
-    protected void enableSignUpButton() {
-        signUpButton.setDisable(isIDEmpty || !arePasswordsValid || isNameEmpty || isAddressEmpty || isCCEmpty || isSecurityAnswerEmpty);
+    protected void setIcon(ImageView imageView, Image image, double opacity) {
+        imageView.setOpacity(opacity);
+        imageView.setImage(image);
+    }
+
+
+    protected void enableNextButton() {
+        nextButton.setDisable(!isIDValid || !arePasswordsValid);
+    }
+
+    @FXML
+    protected void onNextButton() throws IOException {
+        User u = new User(idTextField.getText(), passPasswordField.getText());
+        CustomerHolder holder = CustomerHolder.getInstance();
+        holder.setUser(u);
+        Parent parent = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("sign-up-step-two-view.fxml")));
+        Stage stage = (Stage) nextButton.getScene().getWindow();
+        Scene scene = new Scene(parent);
+        stage.setScene(scene);
+        stage.show();
     }
 
     protected boolean isPasswordValid(String password) {
@@ -167,8 +178,15 @@ public class SignUpController implements Initializable {
                     break;
                 }
         }
-
         return hasDigit && hasUpper && hasSpecialChar;
+    }
+
+    @FXML protected void onCancelButton() throws IOException {
+        Parent parent = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("log-on-view.fxml")));
+        Stage stage = (Stage) nextButton.getScene().getWindow();
+        Scene scene = new Scene(parent);
+        stage.setScene(scene);
+        stage.show();
     }
 
 }

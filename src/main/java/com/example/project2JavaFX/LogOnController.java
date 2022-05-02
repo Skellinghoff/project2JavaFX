@@ -3,7 +3,6 @@ package com.example.project2JavaFX;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -11,18 +10,15 @@ import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
+
 import java.io.IOException;
-import java.io.ObjectInputStream;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
 public class LogOnController implements Initializable {
-    private Stage stage;
-    private Scene scene;
-    private Parent parent;
+    @FXML public Button cancelButton;
     @FXML
     private Label infoLabel;
     @FXML
@@ -35,47 +31,29 @@ public class LogOnController implements Initializable {
     private Button signUpButton;
     private boolean isIDEmpty = true;
     private boolean isPassEmpty = true;
-    private Customer[] customers;
+    private ArrayList<Customer> customers;
     @FXML
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         System.out.println("Log on Controller Initialized.");
         logInButton.setDisable(true);
 
-//        try {
-//            customers = getCustomers();
-//        } catch (IOException | ClassNotFoundException e) {
-//            throw new RuntimeException(e);
-//        }
-
-    }
-
-    private static Customer[] getCustomers() throws IOException, ClassNotFoundException {
-        final int NUM_ITEMS = 10;
-
-        FileInputStream inStream = new FileInputStream("com/example/project2JavaFX/Customers.dat");
-
-        ObjectInputStream objectInputFile = new ObjectInputStream(inStream);
-
-        Customer[] customers = new Customer[NUM_ITEMS];
-
-        for (int i = 0; i < customers.length; i++) {
-            customers[i] = (Customer) objectInputFile.readObject();
+        try {
+            customers = FileManagement.getCustomers();
+        } catch (IOException | ClassNotFoundException e) {
+            customers = null;
+            throw new RuntimeException(e);
         }
 
-        // Close the file.
-        objectInputFile.close();
-        return customers;
     }
 
     @FXML
     protected void onSignUpButton() throws IOException {
-        parent = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("sign-up-view.fxml")));
-        stage = (Stage) signUpButton.getScene().getWindow();
-        scene = new Scene(parent);
+        Parent parent = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("sign-up-step-one-view.fxml")));
+        Stage stage = (Stage) signUpButton.getScene().getWindow();
+        Scene scene = new Scene(parent);
         stage.setScene(scene);
         stage.show();
-
 
     }
 

@@ -1,5 +1,6 @@
 package com.example.project2JavaFX;
 
+import com.example.project2JavaFX.Exceptions.NegativeStartingBalanceException;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -10,7 +11,6 @@ import java.io.IOException;
 import java.util.Objects;
 
 public class COSApplication extends Application {
-    private Stage primaryStage;
     @Override
     public void start(Stage primaryStage) throws IOException {
         Parent parent = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("log-on-view.fxml")));
@@ -20,12 +20,12 @@ public class COSApplication extends Application {
         primaryStage.show();
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args)  {
+        try {
+            FileManagement.setExampleCustomers();
+        } catch (IOException | ClassNotFoundException | NegativeStartingBalanceException e) {
+            throw new RuntimeException(e);
+        }
         launch();
-    }
-    public void changeScene(String fxml) throws IOException {
-        Parent pane = FXMLLoader.load(Objects.requireNonNull(getClass().getResource(fxml)));
-
-        primaryStage.getScene().setRoot(pane);
     }
 }
