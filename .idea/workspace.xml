@@ -5,44 +5,23 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="aa6e5e62-8ec1-40b5-9b58-7066bfd83f71" name="Changes" comment="kjhg">
-      <change afterPath="$PROJECT_DIR$/Customers.dat" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/project2JavaFX/Files/Customers.dat" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/project2JavaFX/NoMoreTriesViewController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/project2JavaFX/SecurityQuestionController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/project2JavaFX/StageManagement.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/project2JavaFX/WelcomeController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/project2JavaFX/WrongAnswerController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/example/project2JavaFX/no-more-tries-view.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/example/project2JavaFX/security-question-view.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/example/project2JavaFX/welcome-view.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/example/project2JavaFX/wrong-answer-view.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Products.dat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/project2JavaFX/Classes/Item.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/project2JavaFX/Classes/Order.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/project2JavaFX/Classes/OrderHolder.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/project2JavaFX/Classes/Product.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/project2JavaFX/Files/Products.dat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/project2JavaFX/MainMenuController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/project2JavaFX/SelectItemsController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/example/project2JavaFX/select-items-view.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/project2JavaFX/BankAccount.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/project2JavaFX/Classes/BankAccount.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Customers.dat" beforeDir="false" afterPath="$PROJECT_DIR$/Customers.dat" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/project2JavaFX/COSApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/project2JavaFX/COSApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/project2JavaFX/Customer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/project2JavaFX/Classes/Customer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/project2JavaFX/CustomerHolder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/project2JavaFX/Classes/CustomerHolder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/project2JavaFX/Exceptions/NegativeBalanceSetException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/project2JavaFX/Exceptions/NegativeBalanceSetException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/project2JavaFX/Exceptions/NegativeDepositException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/project2JavaFX/Exceptions/NegativeDepositException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/project2JavaFX/Exceptions/NegativeStartingBalanceException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/project2JavaFX/Exceptions/NegativeStartingBalanceException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/project2JavaFX/Exceptions/NegativeWithdrawalException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/project2JavaFX/Exceptions/NegativeWithdrawalException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/project2JavaFX/Exceptions/OverdrawException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/project2JavaFX/Exceptions/OverdrawException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/project2JavaFX/Classes/Customer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/project2JavaFX/Classes/Customer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/project2JavaFX/FileManagement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/project2JavaFX/FileManagement.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/project2JavaFX/LogOnController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/project2JavaFX/LogOnController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/project2JavaFX/PersonalDetails.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/project2JavaFX/Classes/PersonalDetails.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/project2JavaFX/SignUpStepOneController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/project2JavaFX/SignUpStepOneController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/project2JavaFX/SignUpStepThreeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/project2JavaFX/SignUpStepThreeController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/project2JavaFX/SignUpStepTwoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/project2JavaFX/SignUpStepTwoController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/project2JavaFX/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/project2JavaFX/Classes/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/project2JavaFX/Customers.dat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/project2JavaFX/icons/cancel-svgrepo-com.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/project2JavaFX/Icons/cancel.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/project2JavaFX/icons/cancel-svgrepo-com.svg" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/project2JavaFX/Icons/cancel-svgrepo-com.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/project2JavaFX/icons/checked-svgrepo-com.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/project2JavaFX/Icons/checked.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/project2JavaFX/icons/checked-svgrepo-com.svg" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/project2JavaFX/Icons/checked-svgrepo-com.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/project2JavaFX/icons/options-svgrepo-com.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/project2JavaFX/Icons/options.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/project2JavaFX/log-on-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/project2JavaFX/log-on-view.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/project2JavaFX/sign-up-step-one-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/project2JavaFX/sign-up-step-one-view.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/project2JavaFX/SecurityQuestionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/project2JavaFX/SecurityQuestionController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/project2JavaFX/main-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/project2JavaFX/main-view.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/project2JavaFX/security-question-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/project2JavaFX/security-question-view.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -142,7 +121,7 @@
       <updated>1650872942246</updated>
       <workItem from="1650872943715" duration="18762000" />
       <workItem from="1651460396630" duration="6511000" />
-      <workItem from="1651466961408" duration="22767000" />
+      <workItem from="1651466961408" duration="52617000" />
     </task>
     <task id="LOCAL-00001" summary="kjhg">
       <created>1651467454502</created>
@@ -151,7 +130,14 @@
       <option name="project" value="LOCAL" />
       <updated>1651467454502</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="kjhg">
+      <created>1651492636925</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1651492636925</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

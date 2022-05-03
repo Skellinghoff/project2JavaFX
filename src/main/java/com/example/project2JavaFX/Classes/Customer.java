@@ -6,6 +6,7 @@ public class Customer implements Serializable {
     private User user;
     private PersonalDetails personalDetails;
     private BankAccount bankAccount;
+    private Order[] orders;
 
     public Customer(User user, PersonalDetails personalDetails, BankAccount bankAccount) {
         this.user = user;
@@ -46,5 +47,13 @@ public class Customer implements Serializable {
 
     public void setBankAccount(BankAccount bankAccount) {
         this.bankAccount = bankAccount;
+    }
+
+    public Order[] getOrders() {
+        return orders;
+    }
+
+    public void setOrders(Order[] orders) {
+        this.orders = orders;
     }
 }

@@ -23,6 +23,7 @@ public class COSApplication extends Application {
     public static void main(String[] args) {
         try {
             FileManagement.setExampleCustomers();
+            FileManagement.setProducts();
         } catch (IOException | NegativeStartingBalanceException e) {
             throw new RuntimeException(e);
         }

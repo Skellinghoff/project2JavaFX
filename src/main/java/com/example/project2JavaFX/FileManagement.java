@@ -1,9 +1,6 @@
 package com.example.project2JavaFX;
 
-import com.example.project2JavaFX.Classes.BankAccount;
-import com.example.project2JavaFX.Classes.Customer;
-import com.example.project2JavaFX.Classes.PersonalDetails;
-import com.example.project2JavaFX.Classes.User;
+import com.example.project2JavaFX.Classes.*;
 import com.example.project2JavaFX.Exceptions.NegativeStartingBalanceException;
 
 import java.io.*;
@@ -137,5 +134,89 @@ public class FileManagement {
         objectInputFile.close();
         System.out.println("The serialized objects were read from the Customers.dat file.");
         return customers;
+    }
+
+    public static void setProducts() throws IOException {
+        FileOutputStream outStream = new FileOutputStream("Products.dat");
+        ObjectOutputStream objectOutputFile = new ObjectOutputStream(outStream);
+
+        Product products[] = {
+                new Product(
+                        "Nintendo Entertainment System",
+                        "You can go back in time to the roots of video games with the Nintendo Entertainment System Deluxe gray console. This classic Nintendo is a legend from the 1980s. This NES system can make gaming simple and fun for all ages.",
+                        172.32),
+                new Product(
+                        "Super Nintendo Entertainment System",
+                        "Nintendo Super Nintendo is a console that provides hours of entertainment. Thanks to the integrated processor, this white NTSC-U/C (US/CA) console offers seamless gaming experience. In addition, the device helps you enjoy your favorite games every time.",
+                        159.99),
+                new Product(
+                        "Nintendo 64",
+                        "Enjoy hours of entertainment with this Nintendo 64 console. It is equipped with a reliable NEC VR4300 64-bit processor together with 4 MB RAM. In addition, this NTSC console features wired Internet connectivity and comes in charcoal grey.",
+                        102.50),
+                new Product(
+                        "Nintendo GameCube",
+                        "The Nintendo GameCube limited edition platinum console is compact and lightweight, making it easy to transport from room to room. It is powerful with its Gekko 485 MHz processor, meaning you get slick graphics and fast gameplay.",
+                        199.99),
+                new Product(
+                        "Nintendo Wii",
+                        "The Nintendo Wii is a home video game console in the color white. It was first released in 2006 by Nintendo and introduced the Wii Remote controller, which can be used as a handheld pointing device and which detects movements in three dimensions.",
+                        134.99
+                ),
+                new Product(
+                        "Nintendo Wii U",
+                        "The Wii U Game pad breaks down barriers between you and your entertainment with a 6.2\" 16:9 LCD touch screen, motion control system, front-facing camera, microphone, stereo speakers, rumble feature, button controls and analog sticks.",
+                        209.99
+                ),
+                new Product(
+                       "Nintendo Switch",
+                       "Get the gaming system that lets you play the games you want, wherever you are, however you like. Includes the Nintendo Switch console and Nintendo Switch dock in black, with contrasting left and right Joy‑Con controllers-one red, one blue.",
+                        299.00
+                ),
+                new Product(
+                        "Nintendo Game Boy",
+                        "The state of the art compact video game system for portable, hand-held video action!",
+                        79.99
+                ),
+                new Product(
+                        "Nintendo GameBoy Advance SP",
+                        "New illumination feature and sleek flip-screen design making it the most distinctively stylish, compact and portable Game Boy system ever.",
+                        214.95
+                ),
+                new Product(
+                        "Nintendo DS Lite",
+                        "DS Lite doesn't just play DS games it also features an additional port for Game Boy Advance Game Pak",
+                        184.99
+                )
+        };
+
+        for (Product product : products) {
+            objectOutputFile.writeObject(product);
+        }
+        objectOutputFile.close();
+
+        System.out.println("The serialized objects were written to the Products.dat file.");
+    }
+
+    public static Product[] getProducts() throws IOException, ClassNotFoundException, InvocationTargetException {
+        FileInputStream inStream = new FileInputStream("Products.dat");
+
+        ObjectInputStream objectInputFile = new ObjectInputStream(inStream);
+
+        ArrayList<Product> products = new ArrayList<>();
+
+        while (true) {
+            try {
+                Product product = (Product) objectInputFile.readObject();
+                products.add(product);
+            } catch (EOFException e) {
+                System.out.println("EOF Reached.");
+                break;
+            }
+        }
+
+        // Close the file.
+        objectInputFile.close();
+        System.out.println("The serialized objects were read from the Products.dat file.");
+        return products.toArray(new Product[0]);
     }
 }
