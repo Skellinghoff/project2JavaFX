@@ -2,6 +2,8 @@ package com.example.project2JavaFX;
 
 import com.example.project2JavaFX.Classes.Customer;
 import com.example.project2JavaFX.Classes.CustomerHolder;
+import com.example.project2JavaFX.Classes.Order;
+import com.example.project2JavaFX.Classes.OrderHolder;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -12,13 +14,28 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class MainMenuController implements Initializable {
-    public Button selectItemsButton;
-    public Button makeOrderButton;
-    public Button viewOrderButton;
-    public Button logOutButton;
+    @FXML
+    private Button selectItemsButton;
+    @FXML
+    private Button makeOrderButton;
+    @FXML
+    private Button viewOrdersButton;
+    @FXML
+    private Button logOutButton;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        OrderHolder orderHolder = OrderHolder.getInstance();
+        Order order = orderHolder.getOrder();
+
+        CustomerHolder customerHolder = CustomerHolder.getInstance();
+        Customer customer = customerHolder.getCustomer();
+        System.out.println(customer);
+        Order[] orders = customer.getOrders();
+
+        makeOrderButton.setDisable(order == null);
+        viewOrdersButton.setDisable(orders == null || orders.length <= 0);
+
     }
 
     @FXML
@@ -28,12 +45,14 @@ public class MainMenuController implements Initializable {
     }
 
     @FXML
-    protected void onMakeOrderButton() {
+    protected void onMakeOrderButton() throws IOException {
+        Stage stage = (Stage) selectItemsButton.getScene().getWindow();
+        StageManagement.showOnSameStage(this, stage, "make-order-view.fxml");
 
     }
 
     @FXML
-    protected void onViewOrderButton() {
+    protected void onViewOrdersButton() {
 
     }
 

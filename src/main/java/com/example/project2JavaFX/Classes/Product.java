@@ -28,6 +28,12 @@ public class Product implements Serializable {
 
     public Product() {}
 
+    @Override
+    public String toString() {
+        return "Product={ name=" + name + ", description=" + description + ", regularPrice=" + regularPrice +
+                ", salePercent=" + salePercent + ", onSale=" + onSale + ", salePrice=" + salePrice + " }";
+    }
+
     public void setName(String name) {
         this.name = name;
     }
@@ -88,11 +94,5 @@ public class Product implements Serializable {
 
     public boolean isOnSale() {
         return onSale;
-    }
-
-    @Override
-    public String toString() {
-        return "Product={ name=" + name + ", description=" + description + ", regularPrice=" + regularPrice +
-                ", salePercent=" + salePercent + ", onSale=" + onSale + ", salePrice=" + salePrice + " }";
     }
 }

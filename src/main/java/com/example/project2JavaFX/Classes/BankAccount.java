@@ -60,6 +60,11 @@ public class BankAccount implements Serializable {
         balance = b;
     }
 
+    @Override
+    public String toString() {
+        return String.format("BankAccount={ balance=%.2f", balance) + ", creditCardNumber=" + getCreditCardNumber() + " }";
+    }
+
     /**
      * The deposit method makes a deposit into the account.
      *
@@ -93,6 +98,25 @@ public class BankAccount implements Serializable {
     }
 
     /**
+     * The withdraw method withdraws an amount from the account.
+     *
+     * @param amount The amount to subtract from the balance field.
+     * @throws NegativeWithdrawalException When amount is negative.
+     * @throws OverdrawException           When amount is greater than the account balance.
+     */
+
+    public void withdraw(String amount) throws NegativeWithdrawalException, OverdrawException {
+        double a = Double.parseDouble(amount);
+        if (a > balance)
+            throw new OverdrawException(a);
+
+        if (a < 0)
+            throw new NegativeWithdrawalException(a);
+
+        balance -= a;
+    }
+
+    /**
      * The setBalance method sets the account balance.
      *
      * @param balance The value to store in the balance field.
@@ -114,10 +138,8 @@ public class BankAccount implements Serializable {
         this.creditCardNumber = creditCardNumber;
     }
 
-    @Override
-    public String toString() {
-        return String.format("Bank Account: " +
-                "\n\tBalance: %.2f", balance);
+    public String getConfirmationNumber() {
+        return String.format("%04d", new Random().nextInt(9999));
     }
 }
 

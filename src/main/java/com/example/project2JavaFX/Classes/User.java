@@ -11,6 +11,11 @@ public class User implements Serializable {
         this.password = password;
     }
 
+    @Override
+    public String toString() {
+        return "User={ id=" + id + ", password=" + password + " }";
+    }
+
     public String getId() {
         return id;
     }
@@ -25,10 +30,5 @@ public class User implements Serializable {
 
     public void setPassword(String password) {
         this.password = password;
-    }
-
-    @Override
-    public String toString() {
-        return "User { id=" + id + ", password=" + password + "}";
     }
 }

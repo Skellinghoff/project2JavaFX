@@ -1,19 +1,24 @@
 package com.example.project2JavaFX.Classes;
 
 import java.io.Serializable;
-import java.util.Date;
+import java.util.Arrays;
 
 public class Order implements Serializable {
     private Item[] items;
-    private Date date;
+    private String date;
     private String customerID;
-    private double total;
-    private int authNumber;
+    private String total;
+    private String authNumber;
 
     public Order(Item[] items) {
         this.items = items;
     }
     public Order() {
+    }
+
+    @Override
+    public String toString() {
+        return "Order={ items={ " + Arrays.toString(items) + " }, date=" + date + ", customerID=" + customerID + ", total=" + total + ", authNumber=" + authNumber + " }";
     }
 
     public Item[] getItems() {
@@ -24,11 +29,11 @@ public class Order implements Serializable {
         this.items = items;
     }
 
-    public Date getDate() {
+    public String getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(String date) {
         this.date = date;
     }
 
@@ -40,19 +45,19 @@ public class Order implements Serializable {
         this.customerID = customerID;
     }
 
-    public double getTotal() {
+    public String getTotal() {
         return total;
     }
 
-    public void setTotal(double total) {
+    public void setTotal(String total) {
         this.total = total;
     }
 
-    public int getAuthNumber() {
+    public String getAuthNumber() {
         return authNumber;
     }
 
-    public void setAuthNumber(int authNumber) {
+    public void setAuthNumber(String authNumber) {
         this.authNumber = authNumber;
     }
 }

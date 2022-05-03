@@ -3,16 +3,24 @@ package com.example.project2JavaFX.Classes;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 
-public class Item {
+import java.io.Serializable;
+
+public class Item implements Serializable {
     private Product product;
-    private final IntegerProperty count = new SimpleIntegerProperty();
+    private int count;
+//    private final DoubleProperty itemTotal = new SimpleDoubleProperty();
 
     public Item(Product product, int count) {
         this.product = product;
-        this.count.setValue(count);
+        this.count = count;
     }
+
     @Override
     public String toString() {
+        return "Item={ product=" + product + ", count=" + getCountString() + ", itemTotal=" + getItemTotal() + " }";
+    }
+
+    public String getCountString() {
         return Integer.toString(getCount());
     }
 
@@ -25,14 +33,25 @@ public class Item {
     }
 
     public int getCount() {
-        return count.get();
+        return count;
     }
 
     public void setCount(int count) {
-        this.count.setValue(count);
+        this.count = count;
+    }
+
+    public String getItemTotal() {
+        double itemPrice;
+        if (product.isOnSale())
+            itemPrice = product.getSalePrice();
+        else
+            itemPrice = product.getRegularPrice();
+
+        return Double.toString(itemPrice * getCount());
     }
 
     public IntegerProperty itemCountProperty() {
-        return this.count;
+//        SimpleIntegerProperty c = new SimpleIntegerProperty(this.count);
+        return new SimpleIntegerProperty(this.count);
     }
 }

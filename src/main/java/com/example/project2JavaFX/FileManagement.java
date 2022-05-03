@@ -6,10 +6,10 @@ import com.example.project2JavaFX.Exceptions.NegativeStartingBalanceException;
 import java.io.*;
 import java.lang.reflect.InvocationTargetException;
 import java.text.DecimalFormat;
-import java.util.ArrayList;
-import java.util.Random;
+import java.util.*;
 
 public class FileManagement {
+    public static DecimalFormat dfMoney = new DecimalFormat("0.00");
     public static Customer[] getCustomers() throws IOException, ClassNotFoundException, InvocationTargetException {
         FileInputStream inStream = new FileInputStream("Customers.dat");
 
@@ -34,8 +34,6 @@ public class FileManagement {
     }
 
     public static void setExampleCustomers() throws IOException, NegativeStartingBalanceException {
-
-        DecimalFormat dfMoney = new DecimalFormat("0.00");
 
         Customer[] customers = {
                 new Customer(
@@ -100,7 +98,37 @@ public class FileManagement {
     public static void addCustomer(Customer customer) throws IOException {
         ArrayList<Customer> customerArrayList = getCustomersList();
         customerArrayList.add(customer);
+        writeCustomers(customerArrayList);
+        System.out.println("Customer added.");
+    }
+
+    public static void addOrder(Customer customer, Order order) throws IOException {
+        ArrayList<Customer> customerArrayList = getCustomersList();
+        ArrayList<Order> orderArrayList = new ArrayList<>();
+
+        for (Customer c : customerArrayList) {
+            if (Objects.equals(c.getUser().getId(), customer.getUser().getId())) {
+                orderArrayList.add(order);
+                try {
+                    Collections.addAll(orderArrayList, c.getOrders());
+                } catch (NullPointerException e) {
+                    System.out.println("No Orders.");
+                }
+                Order[] orders = orderArrayList.toArray(new Order[0]);
+                c.setOrders(orders);
+                writeCustomers(customerArrayList);
+                System.out.println("Order added.");
+                System.out.println(order);
+                break;
+            }
+        }
+
+
+    }
+
+    private static void writeCustomers(ArrayList<Customer> customerArrayList) throws IOException {
         Customer[] customers = customerArrayList.toArray(new Customer[0]);
+        System.out.println(Arrays.toString(customers[0].getOrders()));
 
         FileOutputStream outStream = new FileOutputStream("Customers.dat");
         ObjectOutputStream objectOutputFile = new ObjectOutputStream(outStream);
@@ -110,7 +138,6 @@ public class FileManagement {
         }
 
         objectOutputFile.close();
-        System.out.println("Customer added.");
     }
 
     private static ArrayList<Customer> getCustomersList() throws IOException {
@@ -140,7 +167,7 @@ public class FileManagement {
         FileOutputStream outStream = new FileOutputStream("Products.dat");
         ObjectOutputStream objectOutputFile = new ObjectOutputStream(outStream);
 
-        Product products[] = {
+        Product[] products = {
                 new Product(
                         "Nintendo Entertainment System",
                         "You can go back in time to the roots of video games with the Nintendo Entertainment System Deluxe gray console. This classic Nintendo is a legend from the 1980s. This NES system can make gaming simple and fun for all ages.",

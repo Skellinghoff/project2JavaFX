@@ -1,6 +1,10 @@
 package com.example.project2JavaFX.Classes;
 
+import com.example.project2JavaFX.FileManagement;
+
+import java.io.IOException;
 import java.io.Serializable;
+import java.util.Arrays;
 
 public class Customer implements Serializable {
     private User user;
@@ -23,6 +27,11 @@ public class Customer implements Serializable {
         this.user = null;
         this.personalDetails = null;
         this.bankAccount = null;
+    }
+
+    @Override
+    public String toString() {
+        return "Customer={ user=" + user + ", personalDetails=" + personalDetails + ", bankAccount=" + bankAccount + ", orders={ " + Arrays.toString(orders) + " } }";
     }
 
     public User getUser() {
@@ -55,5 +64,13 @@ public class Customer implements Serializable {
 
     public void setOrders(Order[] orders) {
         this.orders = orders;
+    }
+
+    public void addOrder(Order order) {
+        try {
+            FileManagement.addOrder(this, order);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 }

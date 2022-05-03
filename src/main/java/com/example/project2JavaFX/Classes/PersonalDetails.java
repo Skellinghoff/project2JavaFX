@@ -23,6 +23,11 @@ public class PersonalDetails implements Serializable {
         this.address = address;
     }
 
+    @Override
+    public String toString() {
+        return "PersonalDetails={ name=" + name + ", address=" + address + ", securityQuestion=" + securityQuestion + ", securityAnswer" + securityAnswer + " }";
+    }
+
     public String getName() {
         return name;
     }

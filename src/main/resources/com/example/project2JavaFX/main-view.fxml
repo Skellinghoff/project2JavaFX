@@ -26,7 +26,7 @@
       </Label>
       <Button fx:id="selectItemsButton" mnemonicParsing="false" onAction="#onSelectItemsButton" text="Select Items" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
       <Button fx:id="makeOrderButton" mnemonicParsing="false" onAction="#onMakeOrderButton" text="Make Order" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
-      <Button fx:id="viewOrderButton" mnemonicParsing="false" onAction="#onViewOrderButton" text="View Order" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER" />
+      <Button fx:id="viewOrdersButton" mnemonicParsing="false" onAction="#onViewOrdersButton" text="View Orders" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER" />
       <Button fx:id="logOutButton" mnemonicParsing="false" onAction="#onLogoutButton" text="Log Out" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER" />
    </children>
 </GridPane>

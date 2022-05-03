@@ -15,6 +15,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextAlignment;
+import javafx.stage.Stage;
 import javafx.util.Callback;
 
 import java.io.IOException;
@@ -142,7 +143,6 @@ public class SelectItemsController implements Initializable {
                 System.out.println("Product: " + item.getProduct().getName() + ", quantity: " + item.getCount());
             }
         }
-//        System.out.println(productTableView.getItems());
         return order.toArray(new Item[0]);
     }
 
@@ -153,8 +153,14 @@ public class SelectItemsController implements Initializable {
         if (items.length > 0) {
             orderHolder.setOrder(new Order(items));
         } else {
-            orderHolder.setOrder(new Order());
+            orderHolder.setOrder(null);
         }
 
+        Stage stage = (Stage) productTableView.getScene().getWindow();
+        try {
+            StageManagement.showOnSameStage(this, stage, "main-view.fxml");
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 }
