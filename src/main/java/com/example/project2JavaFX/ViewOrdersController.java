@@ -38,7 +38,7 @@ public class ViewOrdersController implements Initializable {
         CustomerHolder customerHolder = CustomerHolder.getInstance();
         customer = customerHolder.getCustomer();
         orders = customer.getOrders();
-        long max = 1;
+        long max = 2;
         for (Order order : orders) {
             String str = order.getItemsString();
             long count = str.chars().filter(ch -> ch == '\n').count();
@@ -52,12 +52,12 @@ public class ViewOrdersController implements Initializable {
         totalsColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getTotalsString()));
 
         orderTableView.setItems(FXCollections.observableArrayList(orders));
-        orderTableView.setFixedCellSize(max * 30);
+        orderTableView.setFixedCellSize(max * 25);
     }
 
     @FXML
     protected void onCloseButton() throws IOException {
         Stage stage = (Stage) orderTableView.getScene().getWindow();
-        StageManagement.showOnSameStage(this, stage, "main-view.fxml");
+        StageManagement.showOnSameStage(this, stage, "main-controller.fxml");
     }
 }

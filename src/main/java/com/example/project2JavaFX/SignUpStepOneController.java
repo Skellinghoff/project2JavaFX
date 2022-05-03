@@ -196,7 +196,7 @@ public class SignUpStepOneController implements Initializable {
 
     @FXML
     protected void onCancelButton() throws IOException {
-        Parent parent = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("log-on-view.fxml")));
+        Parent parent = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("log-on-controller.fxml")));
         Stage stage = (Stage) nextButton.getScene().getWindow();
         Scene scene = new Scene(parent);
         stage.setScene(scene);

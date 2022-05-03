@@ -4,6 +4,7 @@ import com.example.project2JavaFX.FileManagement;
 
 import java.io.IOException;
 import java.io.Serializable;
+import java.lang.reflect.InvocationTargetException;
 import java.util.Arrays;
 
 public class Customer implements Serializable {
@@ -69,7 +70,7 @@ public class Customer implements Serializable {
     public void addOrder(Order order) {
         try {
             FileManagement.addOrder(this, order);
-        } catch (IOException e) {
+        } catch (IOException | ClassNotFoundException | InvocationTargetException e) {
             throw new RuntimeException(e);
         }
     }

@@ -39,7 +39,7 @@ public class FileManagement {
                 new Customer(
                         new User("customer0", "Customer0!"),
                         new PersonalDetails("customer0", "customer0, 0000, 0000, 0000", "What was your childhood nickname?", "customer0"),
-                        new BankAccount(dfMoney.format(new Random().nextDouble(1000, 1000000)), "0000000000000000")),
+                        new BankAccount(dfMoney.format(0.00), "0000000000000000")),
                 new Customer(
                         new User("customer1", "Customer1!"),
                         new PersonalDetails("customer1", "customer1, 1111, 1111, 1111", "What was your childhood nickname?", "customer1"),
@@ -99,34 +99,42 @@ public class FileManagement {
         ArrayList<Customer> customerArrayList = getCustomersList();
         customerArrayList.add(customer);
         writeCustomers(customerArrayList);
-        System.out.println("Customer added.");
+        if (confirmAddCustomer(customer)) {
+            System.out.println("Customer added.");
+        } else {
+            System.out.println("Something went wrong adding the Customer.");
+        }
     }
 
-    public static void addOrder(Customer customer, Order order) throws IOException {
+    private static boolean confirmAddCustomer(Customer customer) throws IOException {
+        ArrayList<Customer> customers = getCustomersList();
+        return customers.contains(customer);
+    }
+
+    public static void addOrder(Customer customer, Order order) throws IOException, ClassNotFoundException, InvocationTargetException {
         ArrayList<Customer> customerArrayList = getCustomersList();
-        ArrayList<Order> orderArrayList = new ArrayList<>();
+        String targetID = customer.getUser().getId();
 
-        for (Customer c : customerArrayList) {
-            if (Objects.equals(c.getUser().getId(), customer.getUser().getId())) {
-//                orderArrayList.add(order);
-                try {
-                    Collections.addAll(orderArrayList, order);
-                    Collections.addAll(orderArrayList, c.getOrders());
-                } catch (NullPointerException e) {
-                    System.out.println("No Orders.");
-                }
-                Order[] orders = orderArrayList.toArray(new Order[0]);
-                System.out.println(Arrays.toString(orders));
-                c.setOrders(orders);
-                writeCustomers(customerArrayList);
-                System.out.println("Order added.");
-                CustomerHolder.getInstance().setCustomer(c);
-                OrderHolder.getInstance().setOrder(null);
-                break;
-            }
+        int i = getTargetIndex(customerArrayList, targetID);
+
+        if (customerArrayList.get(i).getOrders() == null) {
+            customer.setOrders(new Order[]{order});
+        } else {
+            ArrayList<Order> orderArrayList = new ArrayList<>(Arrays.asList(customerArrayList.get(i).getOrders()));
+            orderArrayList.add(order);
+            customer.setOrders(orderArrayList.toArray(new Order[0]));
         }
+        customerArrayList.set(i, customer);
+        writeCustomers(customerArrayList);
 
+    }
 
+    private static int getTargetIndex(ArrayList<Customer> customerArrayList, String targetID) {
+        int i = 0;
+        while (!Objects.equals(customerArrayList.get(i).getUser().getId(), targetID)) {
+            i++;
+        }
+        return i;
     }
 
     private static void writeCustomers(ArrayList<Customer> customerArrayList) throws IOException {
@@ -164,6 +172,13 @@ public class FileManagement {
         objectInputFile.close();
         System.out.println("The serialized objects were read from the Customers.dat file.");
         return customers;
+    }
+
+    public static void updateCustomer(Customer customer) throws IOException {
+        ArrayList<Customer> customerArrayList = getCustomersList();
+        int target = getTargetIndex(customerArrayList, customer.getUser().getId());
+        customerArrayList.set(target, customer);
+        writeCustomers(customerArrayList);
     }
 
     public static void setProducts() throws IOException {
@@ -248,5 +263,81 @@ public class FileManagement {
         objectInputFile.close();
         System.out.println("The serialized objects were read from the Products.dat file.");
         return products.toArray(new Product[0]);
+    }
+
+    public static Supplier[] getSupplier() throws IOException, ClassNotFoundException, InvocationTargetException {
+        FileInputStream inStream = new FileInputStream("Suppliers.dat");
+
+        ObjectInputStream objectInputFile = new ObjectInputStream(inStream);
+
+        ArrayList<Supplier> suppliers = new ArrayList<>();
+
+        while (true) {
+            try {
+                Supplier supplier = (Supplier) objectInputFile.readObject();
+                suppliers.add(supplier);
+            } catch (EOFException e) {
+                System.out.println("EOF Reached.");
+                break;
+            }
+        }
+
+        // Close the file.
+        objectInputFile.close();
+        System.out.println("The serialized objects were read from the Suppliers.dat file.");
+        return suppliers.toArray(new Supplier[0]);
+    }
+
+    public static void addSupplier(Supplier supplier) throws IOException {
+        ArrayList<Supplier> supplierArrayList = getSuppliersList();
+        supplierArrayList.add(supplier);
+        writeSuppliers(supplierArrayList);
+        if (confirmAddSupplier(supplier)) {
+            System.out.println("Supplier added.");
+        } else {
+            System.out.println("Something went wrong adding the Supplier.");
+        }
+    }
+
+    private static ArrayList<Supplier> getSuppliersList() throws IOException {
+        FileInputStream inStream = new FileInputStream("Supplier.dat");
+        ObjectInputStream objectInputFile = new ObjectInputStream(inStream);
+        ArrayList<Supplier> suppliers = new ArrayList<>();
+
+        while (true) {
+            try {
+                Supplier supplier = (Supplier) objectInputFile.readObject();
+                suppliers.add(supplier);
+            } catch (EOFException e) {
+                System.out.println("EOF Reached.");
+                break;
+            } catch (ClassNotFoundException e) {
+                throw new RuntimeException(e);
+            }
+        }
+
+        // Close the file.
+        objectInputFile.close();
+        System.out.println("The serialized objects were read from the Suppliers.dat file.");
+        return suppliers;
+    }
+
+    private static void writeSuppliers(ArrayList<Supplier> supplierArrayList) throws IOException {
+        Supplier[] suppliers = supplierArrayList.toArray(new Supplier[0]);
+        System.out.println(Arrays.toString(suppliers[0].getOrders()));
+
+        FileOutputStream outStream = new FileOutputStream("Suppliers.dat");
+        ObjectOutputStream objectOutputFile = new ObjectOutputStream(outStream);
+
+        for (Supplier s : suppliers) {
+            objectOutputFile.writeObject(s);
+        }
+
+        objectOutputFile.close();
+    }
+
+    private static boolean confirmAddSupplier(Supplier supplier) throws IOException {
+        ArrayList<Supplier> suppliers = getSuppliersList();
+        return suppliers.contains(supplier);
     }
 }

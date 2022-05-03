@@ -8,10 +8,7 @@ import javafx.animation.KeyValue;
 import javafx.animation.Timeline;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.util.Duration;
@@ -77,7 +74,7 @@ public class LogOnController implements Initializable {
                 System.out.println(customer);
                 System.out.println("password matches");
                 Stage stage = (Stage) signUpButton.getScene().getWindow();
-                StageManagement.showOnSameStage(this, stage, "security-question-view.fxml");
+                StageManagement.showOnSameStage(this, stage, "security-question-controller.fxml");
             } else {
                 updateTryLabel();
                 welcomeLabel.setText("Incorrect ID/password!");
@@ -149,11 +146,7 @@ public class LogOnController implements Initializable {
     protected void updateTryLabel() {
         tries -= 1;
         if (tries == 0) {
-            try {
-                StageManagement.showOnNewStage(this, "no-more-tries-view.fxml");
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
+            StageManagement.createDialog("Too many log in attempts!","Program terminating...", true);
         } else if (tries == 1) {
             tryLabel.setTextFill(Color.RED);
         }

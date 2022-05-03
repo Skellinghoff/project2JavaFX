@@ -47,7 +47,7 @@ public class MainMenuController implements Initializable {
     @FXML
     protected void onMakeOrderButton() throws IOException {
         Stage stage = (Stage) selectItemsButton.getScene().getWindow();
-        StageManagement.showOnSameStage(this, stage, "make-order-view.fxml");
+        StageManagement.showOnSameStage(this, stage, "make-order-controller.fxml");
 
     }
 
@@ -63,6 +63,6 @@ public class MainMenuController implements Initializable {
         CustomerHolder customerHolder = CustomerHolder.getInstance();
         customerHolder.setCustomer(new Customer());
         Stage stage = (Stage) logOutButton.getScene().getWindow();
-        StageManagement.showOnSameStage(this, stage, "log-on-view.fxml");
+        StageManagement.showOnSameStage(this, stage, "log-on-controller.fxml");
     }
 }

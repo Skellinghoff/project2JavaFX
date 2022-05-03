@@ -1,15 +1,14 @@
 package com.example.project2JavaFX;
 
-import com.example.project2JavaFX.Classes.BankAccount;
-import com.example.project2JavaFX.Classes.CustomerHolder;
-import com.example.project2JavaFX.Classes.PersonalDetails;
-import com.example.project2JavaFX.Classes.User;
+import com.example.project2JavaFX.Classes.*;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
+import org.jetbrains.annotations.NotNull;
 
 import java.io.IOException;
 import java.net.URL;
@@ -18,20 +17,22 @@ import java.util.ResourceBundle;
 
 public class SignUpStepTwoController implements Initializable {
     @FXML
-    Button nextButton;
+    private CheckBox supplierCheckBox;
     @FXML
-    TextField nameTextField;
+    private Button nextButton;
     @FXML
-    TextField addressTextField;
+    private TextField nameTextField;
     @FXML
-    TextField CCTextField;
+    private TextField addressTextField;
+    @FXML
+    private TextField CCTextField;
 
     private User user;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        CustomerHolder holder = CustomerHolder.getInstance();
-        user = holder.getUser();
+        CustomerHolder customerHolder = CustomerHolder.getInstance();
+        user = customerHolder.getUser();
         System.out.println(user);
         nextButton.setDisable(true);
     }
@@ -39,17 +40,27 @@ public class SignUpStepTwoController implements Initializable {
 
     @FXML
     protected void onNextButton() throws IOException {
-        CustomerHolder holder = CustomerHolder.getInstance();
-        PersonalDetails personalDetails = new PersonalDetails(nameTextField.getText(), addressTextField.getText());
-        holder.setBankAccount(new BankAccount(CCTextField.getText()));
-        holder.setPersonDetails(personalDetails);
-        holder.setUser(user);
+        CustomerHolder customerHolder = CustomerHolder.getInstance();
+        if (!supplierCheckBox.isSelected()) {
+            PersonalDetails personalDetails = new PersonalDetails(nameTextField.getText(), addressTextField.getText());
+            customerHolder.setBankAccount(new BankAccount(CCTextField.getText()));
+            customerHolder.setPersonDetails(personalDetails);
+            customerHolder.setUser(user);
+        } else {
+            SupplierHolder supplierHolder = SupplierHolder.getInstance();
+            PersonalDetails personalDetails = new PersonalDetails(nameTextField.getText(), addressTextField.getText());
+            if (!CCTextField.getText().isBlank())
+                supplierHolder.setBankAccount(new BankAccount(CCTextField.getText()));
+            supplierHolder.setPersonDetails(personalDetails);
+            supplierHolder.setUser(user);
+            customerHolder.empty();
+        }
         Stage stage = (Stage) nextButton.getScene().getWindow();
         StageManagement.showOnSameStage(this, stage, "sign-up-step-three-view.fxml");
     }
 
     @FXML
-    protected void onKeyTypedTextField(KeyEvent event) {
+    protected void onKeyTypedTextField(@NotNull KeyEvent event) {
         TextField n = (TextField) event.getSource();
         String source = n.getId();
         String content = n.getText();
@@ -59,12 +70,24 @@ public class SignUpStepTwoController implements Initializable {
                 n.setText(content.replaceAll("\\D", ""));
             }
         }
-        nextButton.setDisable(nameTextField.getText().isBlank() || addressTextField.getText().isBlank() || CCTextField.getText().isBlank());
+        enableNextButton();
     }
 
     @FXML
     protected void onCancelButton() throws IOException {
         Stage stage = (Stage) nextButton.getScene().getWindow();
-        StageManagement.showOnSameStage(this, stage, "log-on-view.fxml");
+        StageManagement.showOnSameStage(this, stage, "log-on-controller.fxml");
+    }
+
+    @FXML
+    protected void onCheckBox() {
+        enableNextButton();
+    }
+
+    protected void enableNextButton() {
+        if (supplierCheckBox.isSelected())
+            nextButton.setDisable(nameTextField.getText().isBlank() || addressTextField.getText().isBlank());
+        else
+            nextButton.setDisable(nameTextField.getText().isBlank() || addressTextField.getText().isBlank() || CCTextField.getText().isBlank());
     }
 }

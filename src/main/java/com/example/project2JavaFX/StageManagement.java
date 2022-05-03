@@ -3,6 +3,7 @@ package com.example.project2JavaFX;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -23,5 +24,17 @@ public class StageManagement {
         Scene scene = new Scene(parent);
         stage.setScene(scene);
         stage.show();
+    }
+
+    public static void createDialog(String header, String content, boolean... close) {
+        Alert alert = new Alert(Alert.AlertType.WARNING);
+        alert.setTitle("Warning");
+        alert.setHeaderText(header);
+        alert.setContentText(content);
+        alert.showAndWait();
+        if (close.length > 0 && close[0]) {
+            System.out.println("Application Closed.");
+            javafx.application.Platform.exit();
+        }
     }
 }

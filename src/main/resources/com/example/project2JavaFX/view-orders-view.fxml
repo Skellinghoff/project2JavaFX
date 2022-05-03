@@ -20,7 +20,7 @@
       <RowConstraints maxHeight="308.0" minHeight="10.0" prefHeight="38.0" vgrow="SOMETIMES" />
    </rowConstraints>
    <children>
-      <TableView fx:id="orderTableView" fixedCellSize="25.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="420.0" prefWidth="759.0" GridPane.columnSpan="2147483647" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+      <TableView fx:id="orderTableView" nodeOrientation="LEFT_TO_RIGHT" prefHeight="420.0" prefWidth="759.0" GridPane.columnSpan="2147483647" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
          <columns>
             <TableColumn fx:id="dateColumn" prefWidth="245.0" text="Date" />
             <TableColumn fx:id="productsColumn" prefWidth="277.0" text="Products" />

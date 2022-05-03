@@ -15,6 +15,7 @@ import java.net.URL;
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class MakeOrderController implements Initializable {
@@ -76,7 +77,6 @@ public class MakeOrderController implements Initializable {
         productTableView.setItems(FXCollections.observableArrayList(order.getItems()));
         setItemTotalLabel();
         setLabels();
-        paymentMethodLabel.setText("CC#:\n" + customer.getBankAccount().getCreditCardNumber());
     }
 
     protected void setItemTotalLabel() {
@@ -96,6 +96,7 @@ public class MakeOrderController implements Initializable {
     }
 
     protected void setLabels() {
+        paymentMethodLabel.setText("CC#:\n" + customer.getBankAccount().getCreditCardNumber());
         double taxRate = 0.0625;
         if (toggleGroup.getSelectedToggle().equals(pickUpRadioButton)) {
             shippingTotalLabel.setText("FREE");
@@ -117,31 +118,41 @@ public class MakeOrderController implements Initializable {
     @FXML
     protected void setPlaceOrderButton() throws IOException {
         BankAccount bankAccount = customer.getBankAccount();
+        SimpleDateFormat formatter = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss");
+        Date date = new Date();
         try {
+
             bankAccount.withdraw(grandTotal);
             String confirmationNumber = bankAccount.getConfirmationNumber();
-            SimpleDateFormat formatter = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss");
-            Date date = new Date();
             order.setAuthNumber(confirmationNumber);
             order.setDate(formatter.format(date));
             order.setTotal(dfMoney.format(grandTotal));
             order.setCustomerID(customer.getUser().getId());
             customer.addOrder(order);
 
+            OrderHolder.getInstance().setOrder(null);
+
             Stage stage = (Stage) cancelButton.getScene().getWindow();
-            StageManagement.showOnSameStage(this, stage, "main-view.fxml");
+            StageManagement.showOnSameStage(this, stage, "main-controller.fxml");
 
         } catch (NegativeWithdrawalException | OverdrawException e) {
-
-            Stage stage = (Stage) cancelButton.getScene().getWindow();
-            StageManagement.showOnSameStage(this, stage, "new-CC-view.fxml");
-
+            TextInputDialog dialog = new TextInputDialog();
+            dialog.setTitle("New Credit Card");
+            dialog.setHeaderText("Something went wrong...");
+            dialog.setContentText("Enter in new Credit Card Number:");
+            Optional<String> result = dialog.showAndWait();
+            if (result.isPresent()) {
+                customer.setBankAccount(new BankAccount(result.get()));
+                FileManagement.updateCustomer(customer);
+                CustomerHolder.getInstance().setCustomer(customer);
+                setLabels();
+            }
         }
     }
 
     @FXML
     protected void onCancelButton() throws IOException {
         Stage stage = (Stage) cancelButton.getScene().getWindow();
-        StageManagement.showOnSameStage(this, stage, "main-view.fxml");
+        StageManagement.showOnSameStage(this, stage, "main-controller.fxml");
     }
 }

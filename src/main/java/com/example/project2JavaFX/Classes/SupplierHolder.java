@@ -1,25 +1,26 @@
 package com.example.project2JavaFX.Classes;
 
-public final class CustomerHolder {
-    private Customer customer;
+public final class SupplierHolder {
+
+    private Supplier supplier;
     private User user;
     private PersonalDetails personalDetails;
     private BankAccount bankAccount;
-    private final static CustomerHolder INSTANCE = new CustomerHolder();
+    private final static SupplierHolder INSTANCE = new SupplierHolder();
 
-    private CustomerHolder() {
+    private SupplierHolder() {
     }
 
-    public static CustomerHolder getInstance() {
+    public static SupplierHolder getInstance() {
         return INSTANCE;
     }
 
-    public void setCustomer(Customer customer) {
-        this.customer = customer;
+    public void setCustomer(Supplier supplier) {
+        this.supplier = supplier;
     }
 
-    public Customer getCustomer() {
-        return this.customer;
+    public Supplier getSupplier() {
+        return this.supplier;
     }
 
     public void setUser(User user) {
@@ -44,13 +45,5 @@ public final class CustomerHolder {
 
     public BankAccount getBankAccount() {
         return this.bankAccount;
-    }
-
-    public void empty() {
-        this.customer = null;
-        this.user = null;
-        this.personalDetails = null;
-        this.bankAccount = null;
-
     }
 }

@@ -44,25 +44,43 @@ public class SignUpStepThreeController implements Initializable {
     protected void onSignUpButton() throws IOException {
         CustomerHolder customerHolder = CustomerHolder.getInstance();
 
-        User user = customerHolder.getUser();
-        PersonalDetails personalDetails = customerHolder.getPersonDetails();
-        BankAccount bankAccount = customerHolder.getBankAccount();
-        personalDetails.setSecurityQuestion(questionComboBox.getValue());
-        personalDetails.setSecurityAnswer(answerTextField.getText());
+        if (customerHolder.getUser() != null) {
+            User user = customerHolder.getUser();
+            PersonalDetails personalDetails = customerHolder.getPersonDetails();
+            BankAccount bankAccount = customerHolder.getBankAccount();
+            personalDetails.setSecurityQuestion(questionComboBox.getValue());
+            personalDetails.setSecurityAnswer(answerTextField.getText());
 
-        Customer customer = new Customer(user, personalDetails, bankAccount);
-        FileManagement.addCustomer(customer);
+            Customer customer = new Customer(user, personalDetails, bankAccount);
+            FileManagement.addCustomer(customer);
 
-        customerHolder.setCustomer(customer);
-        Stage stage = (Stage) signUpButton.getScene().getWindow();
-        StageManagement.showOnSameStage(this, stage, "main-view.fxml");
-        StageManagement.showOnNewStage(this, "welcome-view.fxml");
+            customerHolder.setCustomer(customer);
+            Stage stage = (Stage) signUpButton.getScene().getWindow();
+            StageManagement.showOnSameStage(this, stage, "main-controller.fxml");
+            StageManagement.showOnNewStage(this, "welcome-view.fxml");
+        } else {
+            SupplierHolder supplierHolder = SupplierHolder.getInstance();
+            User user = supplierHolder.getUser();
+            PersonalDetails personalDetails = supplierHolder.getPersonDetails();
+            BankAccount bankAccount = supplierHolder.getBankAccount();
+            personalDetails.setSecurityQuestion(questionComboBox.getValue());
+            personalDetails.setSecurityAnswer(answerTextField.getText());
+
+            Supplier supplier = new Supplier(user, personalDetails, bankAccount);
+            FileManagement.addCustomer(supplier);
+
+            supplierHolder.setCustomer(supplier);
+            Stage stage = (Stage) signUpButton.getScene().getWindow();
+            StageManagement.showOnSameStage(this, stage, "main-controller.fxml");
+            StageManagement.showOnNewStage(this, "welcome-view.fxml");
+
+        }
 
     }
 
     @FXML
     public void onCancelButton() throws IOException {
         Stage stage = (Stage) signUpButton.getScene().getWindow();
-        StageManagement.showOnSameStage(this, stage, "log-on-view.fxml");
+        StageManagement.showOnSameStage(this, stage, "log-on-controller.fxml");
     }
 }

@@ -158,7 +158,7 @@ public class SelectItemsController implements Initializable {
 
         Stage stage = (Stage) productTableView.getScene().getWindow();
         try {
-            StageManagement.showOnSameStage(this, stage, "main-view.fxml");
+            StageManagement.showOnSameStage(this, stage, "main-controller.fxml");
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

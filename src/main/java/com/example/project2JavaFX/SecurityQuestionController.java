@@ -38,7 +38,7 @@ public class SecurityQuestionController implements Initializable {
     @FXML
     protected void onCancelButton() throws IOException {
         Stage stage = (Stage) submitButton.getScene().getWindow();
-        StageManagement.showOnSameStage(this, stage, "log-on-view.fxml");
+        StageManagement.showOnSameStage(this, stage, "log-on-controller.fxml");
     }
 
     @FXML
@@ -49,10 +49,10 @@ public class SecurityQuestionController implements Initializable {
             CustomerHolder customerHolder = CustomerHolder.getInstance();
             customerHolder.setCustomer(customer);
             Stage stage = (Stage) submitButton.getScene().getWindow();
-            StageManagement.showOnSameStage(this, stage, "main-view.fxml");
+            StageManagement.showOnSameStage(this, stage, "main-controller.fxml");
             StageManagement.showOnNewStage(this, "welcome-view.fxml");
         } else {
-            StageManagement.showOnNewStage(this, "wrong-answer-view.fxml");
+            StageManagement.createDialog("Incorrect Answer","Program Terminating...", true);
         }
     }
 }
