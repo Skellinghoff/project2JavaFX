@@ -2,10 +2,7 @@ package com.example.project2JavaFX;
 
 import com.example.project2JavaFX.Classes.*;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
@@ -13,7 +10,6 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.Objects;
 import java.util.ResourceBundle;
 
 public class SignUpStepThreeController implements Initializable {
@@ -46,23 +42,27 @@ public class SignUpStepThreeController implements Initializable {
 
     @FXML
     protected void onSignUpButton() throws IOException {
-        CustomerHolder holder = CustomerHolder.getInstance();
-        User user = holder.getUser();
-        PersonalDetails personalDetails = holder.getPersonDetails();
-        BankAccount bankAccount = holder.getBankAccount();
+        CustomerHolder customerHolder = CustomerHolder.getInstance();
+
+        User user = customerHolder.getUser();
+        PersonalDetails personalDetails = customerHolder.getPersonDetails();
+        BankAccount bankAccount = customerHolder.getBankAccount();
         personalDetails.setSecurityQuestion(questionComboBox.getValue());
         personalDetails.setSecurityAnswer(answerTextField.getText());
+
         Customer customer = new Customer(user, personalDetails, bankAccount);
         FileManagement.addCustomer(customer);
+
+        customerHolder.setCustomer(customer);
+        Stage stage = (Stage) signUpButton.getScene().getWindow();
+        StageManagement.showOnSameStage(this, stage, "main-view.fxml");
+        StageManagement.showOnNewStage(this, "welcome-view.fxml");
 
     }
 
     @FXML
     public void onCancelButton() throws IOException {
-        Parent parent = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("log-on-view.fxml")));
         Stage stage = (Stage) signUpButton.getScene().getWindow();
-        Scene scene = new Scene(parent);
-        stage.setScene(scene);
-        stage.show();
+        StageManagement.showOnSameStage(this, stage, "log-on-view.fxml");
     }
 }

@@ -34,7 +34,7 @@ public class MainMenuController implements Initializable {
         Order[] orders = customer.getOrders();
 
         makeOrderButton.setDisable(order == null);
-        viewOrdersButton.setDisable(orders == null || orders.length <= 0);
+        viewOrdersButton.setDisable(orders == null || orders.length == 0);
 
     }
 
@@ -52,7 +52,9 @@ public class MainMenuController implements Initializable {
     }
 
     @FXML
-    protected void onViewOrdersButton() {
+    protected void onViewOrdersButton() throws IOException {
+        Stage stage = (Stage) selectItemsButton.getScene().getWindow();
+        StageManagement.showOnSameStage(this, stage, "view-orders-view.fxml");
 
     }
 

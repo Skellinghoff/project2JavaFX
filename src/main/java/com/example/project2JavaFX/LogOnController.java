@@ -58,7 +58,8 @@ public class LogOnController implements Initializable {
 
     @FXML
     protected void onSignUpButton() throws IOException {
-        StageManagement.showOnNewStage(this, "sign-up-step-one-view.fxml");
+        Stage stage = (Stage) signUpButton.getScene().getWindow();
+        StageManagement.showOnSameStage(this, stage, "sign-up-step-one-view.fxml");
     }
 
     @FXML
@@ -75,7 +76,8 @@ public class LogOnController implements Initializable {
                 holder.setCustomer(customer);
                 System.out.println(customer);
                 System.out.println("password matches");
-                StageManagement.showOnSameStage(this, (Stage) signUpButton.getScene().getWindow(), "security-question-view.fxml");
+                Stage stage = (Stage) signUpButton.getScene().getWindow();
+                StageManagement.showOnSameStage(this, stage, "security-question-view.fxml");
             } else {
                 updateTryLabel();
                 welcomeLabel.setText("Incorrect ID/password!");

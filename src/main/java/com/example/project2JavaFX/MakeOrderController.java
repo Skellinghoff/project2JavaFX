@@ -8,7 +8,9 @@ import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.net.URL;
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
@@ -113,21 +115,33 @@ public class MakeOrderController implements Initializable {
     }
 
     @FXML
-    protected void setPlaceOrderButton() {
+    protected void setPlaceOrderButton() throws IOException {
         BankAccount bankAccount = customer.getBankAccount();
         try {
             bankAccount.withdraw(grandTotal);
-        } catch (NegativeWithdrawalException | OverdrawException e) {
-            throw new RuntimeException(e);
-        }
-        String confirmationNumber = bankAccount.getConfirmationNumber();
-        SimpleDateFormat formatter = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss");
-        Date date = new Date();
-        order.setAuthNumber(confirmationNumber);
-        order.setDate(formatter.format(date));
-        order.setTotal(dfMoney.format(grandTotal));
-        order.setCustomerID(customer.getUser().getId());
-        customer.addOrder(order);
+            String confirmationNumber = bankAccount.getConfirmationNumber();
+            SimpleDateFormat formatter = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss");
+            Date date = new Date();
+            order.setAuthNumber(confirmationNumber);
+            order.setDate(formatter.format(date));
+            order.setTotal(dfMoney.format(grandTotal));
+            order.setCustomerID(customer.getUser().getId());
+            customer.addOrder(order);
 
+            Stage stage = (Stage) cancelButton.getScene().getWindow();
+            StageManagement.showOnSameStage(this, stage, "main-view.fxml");
+
+        } catch (NegativeWithdrawalException | OverdrawException e) {
+
+            Stage stage = (Stage) cancelButton.getScene().getWindow();
+            StageManagement.showOnSameStage(this, stage, "new-CC-view.fxml");
+
+        }
+    }
+
+    @FXML
+    protected void onCancelButton() throws IOException {
+        Stage stage = (Stage) cancelButton.getScene().getWindow();
+        StageManagement.showOnSameStage(this, stage, "main-view.fxml");
     }
 }

@@ -108,17 +108,20 @@ public class FileManagement {
 
         for (Customer c : customerArrayList) {
             if (Objects.equals(c.getUser().getId(), customer.getUser().getId())) {
-                orderArrayList.add(order);
+//                orderArrayList.add(order);
                 try {
+                    Collections.addAll(orderArrayList, order);
                     Collections.addAll(orderArrayList, c.getOrders());
                 } catch (NullPointerException e) {
                     System.out.println("No Orders.");
                 }
                 Order[] orders = orderArrayList.toArray(new Order[0]);
+                System.out.println(Arrays.toString(orders));
                 c.setOrders(orders);
                 writeCustomers(customerArrayList);
                 System.out.println("Order added.");
-                System.out.println(order);
+                CustomerHolder.getInstance().setCustomer(c);
+                OrderHolder.getInstance().setOrder(null);
                 break;
             }
         }

@@ -1,9 +1,8 @@
 package com.example.project2JavaFX;
 
 import com.example.project2JavaFX.Classes.BankAccount;
+import com.example.project2JavaFX.Classes.Customer;
 import com.example.project2JavaFX.Classes.CustomerHolder;
-import com.example.project2JavaFX.Classes.PersonalDetails;
-import com.example.project2JavaFX.Classes.User;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -16,38 +15,25 @@ import java.net.URL;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
-public class SignUpStepTwoController implements Initializable {
+public class NewCCController implements Initializable {
     @FXML
-    Button nextButton;
+    private TextField CCTextField;
     @FXML
-    TextField nameTextField;
-    @FXML
-    TextField addressTextField;
-    @FXML
-    TextField CCTextField;
-
-    private User user;
+    private Button nextButton;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        CustomerHolder holder = CustomerHolder.getInstance();
-        user = holder.getUser();
-        System.out.println(user);
-        nextButton.setDisable(true);
+
     }
-
-
     @FXML
     protected void onNextButton() throws IOException {
-        CustomerHolder holder = CustomerHolder.getInstance();
-        PersonalDetails personalDetails = new PersonalDetails(nameTextField.getText(), addressTextField.getText());
-        holder.setBankAccount(new BankAccount(CCTextField.getText()));
-        holder.setPersonDetails(personalDetails);
-        holder.setUser(user);
+        CustomerHolder customerHolder = CustomerHolder.getInstance();
+        Customer customer = customerHolder.getCustomer();
+        customer.setBankAccount(new BankAccount(CCTextField.getText()));
+        customerHolder.setCustomer(customer);
         Stage stage = (Stage) nextButton.getScene().getWindow();
-        StageManagement.showOnSameStage(this, stage, "sign-up-step-three-view.fxml");
+        StageManagement.showOnSameStage(this, stage, "make-order-view.fxml");
     }
-
     @FXML
     protected void onKeyTypedTextField(KeyEvent event) {
         TextField n = (TextField) event.getSource();
@@ -59,12 +45,12 @@ public class SignUpStepTwoController implements Initializable {
                 n.setText(content.replaceAll("\\D", ""));
             }
         }
-        nextButton.setDisable(nameTextField.getText().isBlank() || addressTextField.getText().isBlank() || CCTextField.getText().isBlank());
+        nextButton.setDisable(CCTextField.getText().isBlank());
     }
 
     @FXML
     protected void onCancelButton() throws IOException {
         Stage stage = (Stage) nextButton.getScene().getWindow();
-        StageManagement.showOnSameStage(this, stage, "log-on-view.fxml");
+        StageManagement.showOnSameStage(this, stage, "make-order-view.fxml");
     }
 }

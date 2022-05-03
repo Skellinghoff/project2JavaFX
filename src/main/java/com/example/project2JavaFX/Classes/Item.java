@@ -8,7 +8,6 @@ import java.io.Serializable;
 public class Item implements Serializable {
     private Product product;
     private int count;
-//    private final DoubleProperty itemTotal = new SimpleDoubleProperty();
 
     public Item(Product product, int count) {
         this.product = product;

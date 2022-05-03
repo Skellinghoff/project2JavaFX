@@ -11,18 +11,23 @@ import java.io.IOException;
 import java.util.Objects;
 
 public class COSApplication extends Application {
+    private String title = "COSApplication";
+    COSApplication(String title) throws IOException {
+        this.title = title;
+        this.start(new Stage());
+    }
     @Override
     public void start(Stage primaryStage) throws IOException {
         Parent parent = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("log-on-view.fxml")));
         Scene scene = new Scene(parent);
-        primaryStage.setTitle("COSApplication");
+        primaryStage.setTitle(title);
         primaryStage.setScene(scene);
         primaryStage.show();
     }
 
     public static void main(String[] args) throws NegativeStartingBalanceException, IOException {
-//        FileManagement.setExampleCustomers();
-//        FileManagement.setProducts();
+        FileManagement.setExampleCustomers();
+        FileManagement.setProducts();
         launch();
     }
 }
