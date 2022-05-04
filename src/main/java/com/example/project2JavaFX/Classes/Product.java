@@ -4,12 +4,12 @@ import java.io.Serializable;
 import java.text.DecimalFormat;
 
 public class Product implements Serializable {
-    private String name;
-    private String description;
-    private double regularPrice;
-    private double salePercent = 0.00;
-    private boolean onSale = false;
-    private double salePrice;
+    protected String name;
+    protected String description;
+    protected double regularPrice;
+    protected double salePercent = 0.00;
+    protected boolean onSale = false;
+    protected double salePrice;
 
     public Product(String name, String description, double regularPrice) {
         this.name = name;

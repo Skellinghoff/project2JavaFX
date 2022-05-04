@@ -3,10 +3,10 @@ package com.example.project2JavaFX.Classes;
 import java.io.Serializable;
 
 public class PersonalDetails implements Serializable {
-    private String name;
-    private String address;
-    private String securityQuestion;
-    private String securityAnswer;
+    protected String name;
+    protected String address;
+    protected String securityQuestion;
+    protected String securityAnswer;
 
     public PersonalDetails() {
     }
@@ -25,7 +25,7 @@ public class PersonalDetails implements Serializable {
 
     @Override
     public String toString() {
-        return "PersonalDetails={ name=" + name + ", address=" + address + ", securityQuestion=" + securityQuestion + ", securityAnswer" + securityAnswer + " }";
+        return "PersonalDetails={ name=" + name + ", address=" + address + ", securityQuestion=" + securityQuestion + ", securityAnswer=" + securityAnswer + " }";
     }
 
     public String getName() {

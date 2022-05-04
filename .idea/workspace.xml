@@ -5,38 +5,43 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="aa6e5e62-8ec1-40b5-9b58-7066bfd83f71" name="Changes" comment="kjhg">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/project2JavaFX/Classes/Supplier.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/project2JavaFX/Classes/SupplierHolder.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/project2JavaFX/Files/Suppliers.dat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Suppliers.dat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/project2JavaFX/ProcessOrderController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/project2JavaFX/ShipOrderController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/project2JavaFX/SupplierMainMenuController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/project2JavaFX/ViewStockController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/example/project2JavaFX/process-order-controller.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/example/project2JavaFX/ship-order-controller.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/example/project2JavaFX/supplier-main-menu-controller.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/example/project2JavaFX/view-stock-controller.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Customers.dat" beforeDir="false" afterPath="$PROJECT_DIR$/Customers.dat" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/project2JavaFX/COSApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/project2JavaFX/COSApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/project2JavaFX/Classes/BankAccount.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/project2JavaFX/Classes/BankAccount.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/project2JavaFX/Classes/Customer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/project2JavaFX/Classes/Customer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/project2JavaFX/Classes/CustomerHolder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/project2JavaFX/Classes/CustomerHolder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/project2JavaFX/Classes/Item.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/project2JavaFX/Classes/Item.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/project2JavaFX/Classes/Order.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/project2JavaFX/Classes/Order.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/project2JavaFX/Classes/PersonalDetails.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/project2JavaFX/Classes/PersonalDetails.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/project2JavaFX/Classes/Product.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/project2JavaFX/Classes/Product.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/project2JavaFX/Classes/Supplier.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/project2JavaFX/Classes/Supplier.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/project2JavaFX/Classes/SupplierHolder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/project2JavaFX/Classes/SupplierHolder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/project2JavaFX/Classes/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/project2JavaFX/Classes/User.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/project2JavaFX/FileManagement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/project2JavaFX/FileManagement.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/project2JavaFX/LogOnController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/project2JavaFX/LogOnController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/project2JavaFX/MainMenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/project2JavaFX/MainMenuController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/project2JavaFX/MakeOrderController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/project2JavaFX/MakeOrderController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/project2JavaFX/NewCCController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/project2JavaFX/NoMoreTriesViewController.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/project2JavaFX/OPSApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/project2JavaFX/OPSApplication.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/project2JavaFX/SecurityQuestionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/project2JavaFX/SecurityQuestionController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/project2JavaFX/SelectItemsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/project2JavaFX/SelectItemsController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/project2JavaFX/SignUpStepOneController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/project2JavaFX/SignUpStepOneController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/project2JavaFX/SignUpStepThreeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/project2JavaFX/SignUpStepThreeController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/project2JavaFX/SignUpStepTwoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/project2JavaFX/SignUpStepTwoController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/project2JavaFX/StageManagement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/project2JavaFX/StageManagement.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/project2JavaFX/ViewOrdersController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/project2JavaFX/ViewOrdersController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/project2JavaFX/log-on-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/project2JavaFX/log-on-controller.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/project2JavaFX/main-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/project2JavaFX/main-controller.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/project2JavaFX/make-order-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/project2JavaFX/make-order-controller.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/project2JavaFX/new-CC-view.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/project2JavaFX/no-more-tries-view.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/project2JavaFX/security-question-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/project2JavaFX/security-question-controller.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/project2JavaFX/select-items-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/project2JavaFX/select-items-view.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/project2JavaFX/sign-up-step-two-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/project2JavaFX/sign-up-step-two-view.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/project2JavaFX/view-orders-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/project2JavaFX/view-orders-view.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/project2JavaFX/WelcomeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/project2JavaFX/WelcomeController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/project2JavaFX/select-items-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/project2JavaFX/select-items-controller.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/project2JavaFX/sign-up-step-one-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/project2JavaFX/sign-up-step-one-controller.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/project2JavaFX/sign-up-step-three-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/project2JavaFX/sign-up-step-three-controller.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/project2JavaFX/sign-up-step-two-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/project2JavaFX/sign-up-step-two-controller.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/project2JavaFX/view-orders-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/project2JavaFX/view-orders-controller.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/project2JavaFX/welcome-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/project2JavaFX/welcome-controller.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/project2JavaFX/wrong-answer-view.fxml" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -49,8 +54,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="FxmlFile" />
         <option value="Interface" />
+        <option value="FxmlFile" />
         <option value="Class" />
       </list>
     </option>
@@ -91,18 +96,20 @@
     "create.test.in.the.same.root": "true",
     "extract.method.default.visibility": "private",
     "last.edited.regexp": "1351",
-    "last_opened_file_path": "C:/Users/jarod/IdeaProjects/project2JavaFX/src/main/java/com/example/project2JavaFX",
+    "last_directory_selection": "C:/Users/jarod/IdeaProjects/project2JavaFX/src/main/java/com/example/project2JavaFX",
+    "last_opened_file_path": "C:/Users/jarod/IdeaProjects/project2JavaFX",
     "run.code.analysis.last.selected.profile": "pProject Default"
   }
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\jarod\IdeaProjects\project2JavaFX" />
       <recent name="C:\Users\jarod\IdeaProjects\project2JavaFX\src\main\java\com\example\project2JavaFX" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\jarod\IdeaProjects\project2JavaFX\src\main\java\com\example\project2JavaFX" />
       <recent name="C:\Users\jarod\IdeaProjects\project2JavaFX\src\main\resources\com\example\project2JavaFX\Controllers" />
       <recent name="C:\Users\jarod\IdeaProjects\project2JavaFX\src\main\java\com\example\project2JavaFX\Files" />
-      <recent name="C:\Users\jarod\IdeaProjects\project2JavaFX\src\main\java\com\example\project2JavaFX" />
       <recent name="C:\Users\jarod\IdeaProjects\project2JavaFX\src\main\resources\com\example\project2JavaFX\Exceptions" />
     </key>
     <key name="ExtractSuperBase.RECENT_KEYS">
@@ -157,7 +164,7 @@
       <workItem from="1650872943715" duration="18762000" />
       <workItem from="1651460396630" duration="6511000" />
       <workItem from="1651466961408" duration="76585000" />
-      <workItem from="1651573191182" duration="15337000" />
+      <workItem from="1651573191182" duration="22084000" />
     </task>
     <task id="LOCAL-00001" summary="kjhg">
       <created>1651467454502</created>
@@ -194,7 +201,14 @@
       <option name="project" value="LOCAL" />
       <updated>1651569474443</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="kjhg">
+      <created>1651589091704</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1651589091704</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

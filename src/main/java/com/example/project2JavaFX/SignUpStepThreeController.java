@@ -57,7 +57,7 @@ public class SignUpStepThreeController implements Initializable {
             customerHolder.setCustomer(customer);
             Stage stage = (Stage) signUpButton.getScene().getWindow();
             StageManagement.showOnSameStage(this, stage, "main-controller.fxml");
-            StageManagement.showOnNewStage(this, "welcome-view.fxml");
+            StageManagement.showOnNewStage(this, "welcome-controller.fxml");
         } else {
             SupplierHolder supplierHolder = SupplierHolder.getInstance();
             User user = supplierHolder.getUser();
@@ -67,12 +67,12 @@ public class SignUpStepThreeController implements Initializable {
             personalDetails.setSecurityAnswer(answerTextField.getText());
 
             Supplier supplier = new Supplier(user, personalDetails, bankAccount);
-            FileManagement.addCustomer(supplier);
+            FileManagement.addSupplier(supplier);
 
-            supplierHolder.setCustomer(supplier);
+            supplierHolder.setSupplier(supplier);
             Stage stage = (Stage) signUpButton.getScene().getWindow();
             StageManagement.showOnSameStage(this, stage, "main-controller.fxml");
-            StageManagement.showOnNewStage(this, "welcome-view.fxml");
+            StageManagement.showOnNewStage(this, "welcome-controller.fxml");
 
         }
 

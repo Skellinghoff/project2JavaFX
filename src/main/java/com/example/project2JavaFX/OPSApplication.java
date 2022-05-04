@@ -8,6 +8,7 @@ import java.io.IOException;
 public class OPSApplication extends COSApplication {
     @Override
     public void start(Stage primaryStage) throws IOException, NegativeStartingBalanceException {
+        FileManagement.setExampleSuppliers();
         super.start(primaryStage);
         primaryStage.setTitle("OPS");
     }

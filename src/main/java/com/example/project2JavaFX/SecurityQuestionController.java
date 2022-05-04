@@ -2,6 +2,8 @@ package com.example.project2JavaFX;
 
 import com.example.project2JavaFX.Classes.Customer;
 import com.example.project2JavaFX.Classes.CustomerHolder;
+import com.example.project2JavaFX.Classes.Supplier;
+import com.example.project2JavaFX.Classes.SupplierHolder;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -22,15 +24,21 @@ public class SecurityQuestionController implements Initializable {
     @FXML
     Label questionLabel;
     Customer customer;
+    Supplier supplier;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         CustomerHolder customerHolder = CustomerHolder.getInstance();
+        SupplierHolder supplierHolder = SupplierHolder.getInstance();
         customer = customerHolder.getCustomer();
-        setQuestionLabel();
+        supplier = supplierHolder.getSupplier();
+        if (supplier != null)
+            setQuestionLabel(supplier);
+        else
+            setQuestionLabel(customer);
     }
 
-    protected void setQuestionLabel() {
+    protected void setQuestionLabel(Customer customer) {
         String question = customer.getPersonDetails().getSecurityQuestion();
         questionLabel.setText(question);
     }
@@ -43,14 +51,27 @@ public class SecurityQuestionController implements Initializable {
 
     @FXML
     protected void onSubmitButton() throws IOException {
-        String answer = customer.getPersonDetails().getSecurityAnswer();
+        String answer;
+        if (supplier != null) {
+            answer = supplier.getPersonDetails().getSecurityAnswer();
+        } else {
+            answer = customer.getPersonDetails().getSecurityAnswer();
+        }
+
 
         if (Objects.equals(answer, answerTextField.getText())) {
-            CustomerHolder customerHolder = CustomerHolder.getInstance();
-            customerHolder.setCustomer(customer);
             Stage stage = (Stage) submitButton.getScene().getWindow();
-            StageManagement.showOnSameStage(this, stage, "main-controller.fxml");
-            StageManagement.showOnNewStage(this, "welcome-view.fxml");
+
+            if (supplier != null) {
+                SupplierHolder supplierHolder = SupplierHolder.getInstance();
+                supplierHolder.setSupplier(supplier);
+                StageManagement.showOnSameStage(this, stage, "supplier-main-menu-controller.fxml");
+            } else {
+                CustomerHolder customerHolder = CustomerHolder.getInstance();
+                customerHolder.setCustomer(customer);
+                StageManagement.showOnSameStage(this, stage, "main-controller.fxml");
+            }
+            StageManagement.showOnNewStage(this, "welcome-controller.fxml");
         } else {
             StageManagement.createDialog("Incorrect Answer","Program Terminating...", true);
         }

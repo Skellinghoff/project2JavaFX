@@ -8,10 +8,10 @@ import java.lang.reflect.InvocationTargetException;
 import java.util.Arrays;
 
 public class Customer implements Serializable {
-    private User user;
-    private PersonalDetails personalDetails;
-    private BankAccount bankAccount;
-    private Order[] orders;
+    protected User user;
+    protected PersonalDetails personalDetails;
+    protected BankAccount bankAccount;
+    protected Order[] orders;
 
     public Customer(User user, PersonalDetails personalDetails, BankAccount bankAccount) {
         this.user = user;

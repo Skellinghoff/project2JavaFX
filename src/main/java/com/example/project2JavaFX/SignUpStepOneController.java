@@ -162,7 +162,7 @@ public class SignUpStepOneController implements Initializable {
         User u = new User(idTextField.getText(), passPasswordField.getText());
         CustomerHolder holder = CustomerHolder.getInstance();
         holder.setUser(u);
-        Parent parent = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("sign-up-step-two-view.fxml")));
+        Parent parent = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("sign-up-step-two-controller.fxml")));
         Stage stage = (Stage) nextButton.getScene().getWindow();
         Scene scene = new Scene(parent);
         stage.setScene(scene);

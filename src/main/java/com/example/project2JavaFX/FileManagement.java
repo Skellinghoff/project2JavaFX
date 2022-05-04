@@ -34,7 +34,6 @@ public class FileManagement {
     }
 
     public static void setExampleCustomers() throws IOException, NegativeStartingBalanceException {
-
         Customer[] customers = {
                 new Customer(
                         new User("customer0", "Customer0!"),
@@ -75,7 +74,7 @@ public class FileManagement {
                 new Customer(
                         new User("customer9", "Customer9!"),
                         new PersonalDetails("customer9", "customer9, 9999, 9999, 9999", "What was your childhood nickname?", "customer9"),
-                        new BankAccount(dfMoney.format(new Random().nextDouble(1000, 1000000)), "9999999999999999")),
+                        new BankAccount(dfMoney.format(new Random().nextDouble(1000, 1000000)), "9999999999999999"))
         };
 
 
@@ -91,6 +90,29 @@ public class FileManagement {
         // Close the file.
         objectOutputFile.close();
 
+        System.out.println("The serialized objects were written to the Customers.dat file.");
+
+    }
+
+    public static void setExampleSuppliers() throws IOException {
+        Supplier[] suppliers = {
+                new Supplier(
+                        new User("supplier0", "Supplier0!"),
+                        new PersonalDetails("supplier0", "supplier0, 0000, 0000, 0000", "What was your childhood nickname?", "supplier0"))
+        };
+
+
+        // Create the stream objects.
+        FileOutputStream outStream = new FileOutputStream("Suppliers.dat");
+        ObjectOutputStream objectOutputFile = new ObjectOutputStream(outStream);
+
+        // Write the serialized objects to the file.
+        for (Supplier supplier : suppliers) {
+            objectOutputFile.writeObject(supplier);
+        }
+
+        // Close the file.
+        objectOutputFile.close();
         System.out.println("The serialized objects were written to the Customers.dat file.");
 
     }
@@ -265,7 +287,7 @@ public class FileManagement {
         return products.toArray(new Product[0]);
     }
 
-    public static Supplier[] getSupplier() throws IOException, ClassNotFoundException, InvocationTargetException {
+    public static Supplier[] getSuppliers() throws IOException, ClassNotFoundException, InvocationTargetException {
         FileInputStream inStream = new FileInputStream("Suppliers.dat");
 
         ObjectInputStream objectInputFile = new ObjectInputStream(inStream);

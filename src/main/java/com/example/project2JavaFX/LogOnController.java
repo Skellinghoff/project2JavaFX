@@ -1,14 +1,15 @@
 package com.example.project2JavaFX;
 
-import com.example.project2JavaFX.Classes.Customer;
-import com.example.project2JavaFX.Classes.CustomerHolder;
-import com.example.project2JavaFX.Classes.User;
+import com.example.project2JavaFX.Classes.*;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
 import javafx.animation.Timeline;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.PasswordField;
+import javafx.scene.control.TextField;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.util.Duration;
@@ -37,6 +38,7 @@ public class LogOnController implements Initializable {
     private boolean isIDEmpty = true;
     private boolean isPassEmpty = true;
     private Customer[] customers;
+    private Supplier[] suppliers;
 
     @FXML
     @Override
@@ -45,18 +47,19 @@ public class LogOnController implements Initializable {
         logInButton.setDisable(true);
 
         try {
+            suppliers = FileManagement.getSuppliers();
             customers = FileManagement.getCustomers();
+            System.out.println(Arrays.toString(suppliers));
             System.out.println(Arrays.toString(customers));
         } catch (IOException | ClassNotFoundException | InvocationTargetException e) {
             throw new RuntimeException(e);
         }
-
     }
 
     @FXML
     protected void onSignUpButton() throws IOException {
         Stage stage = (Stage) signUpButton.getScene().getWindow();
-        StageManagement.showOnSameStage(this, stage, "sign-up-step-one-view.fxml");
+        StageManagement.showOnSameStage(this, stage, "sign-up-step-one-controller.fxml");
     }
 
     @FXML
@@ -64,15 +67,23 @@ public class LogOnController implements Initializable {
         String idString = idTextField.getText();
         String passString = passPasswordField.getText();
         User tempUser = new User(idString, passString);
+        CustomerHolder customerHolder = CustomerHolder.getInstance();
+        SupplierHolder supplierHolder = SupplierHolder.getInstance();
+
 
         if (idMatches(tempUser)) {
             System.out.println(tempUser.getId() + " does exist.");
             if (passMatches(tempUser)) {
-                CustomerHolder holder = CustomerHolder.getInstance();
-                Customer customer = findCustomer(tempUser);
-                holder.setCustomer(customer);
-                System.out.println(customer);
-                System.out.println("password matches");
+                String ans = supplierOrCustomer(tempUser);
+                if (ans.equals("Customer")) {
+                    Customer customer = findCustomer(tempUser);
+                    customerHolder.setCustomer(customer);
+                    supplierHolder.empty();
+                } else if (ans.equals("Supplier")) {
+                    Supplier supplier = findSupplier(tempUser);
+                    supplierHolder.setSupplier(supplier);
+                    customerHolder.empty();
+                }
                 Stage stage = (Stage) signUpButton.getScene().getWindow();
                 StageManagement.showOnSameStage(this, stage, "security-question-controller.fxml");
             } else {
@@ -86,6 +97,22 @@ public class LogOnController implements Initializable {
             flashWelcomeLabel();
             System.out.println(tempUser.getId() + " does not exist.");
         }
+    }
+
+    private String supplierOrCustomer(User user) {
+        for (Customer c : customers) {
+            if (Objects.equals(c.getUser().getId(), user.getId())) {
+                return "Customer";
+            }
+        }
+        for (Supplier s : suppliers) {
+            if (Objects.equals(s.getUser().getId(), user.getId())) {
+                return "Supplier";
+            }
+        }
+
+        return "N";
+
     }
 
     @FXML
@@ -116,19 +143,46 @@ public class LogOnController implements Initializable {
     }
 
     protected boolean idMatches(User user) {
-        for (Customer c : customers) {
-            if (Objects.equals(c.getUser().getId(), user.getId())) {
-                return true;
+        try {
+            for (Customer c : customers) {
+                if (Objects.equals(c.getUser().getId(), user.getId())) {
+                    return true;
+                }
             }
+        } catch (NullPointerException e) {
+            e.printStackTrace();
+        }
+        try {
+            for (Supplier s : suppliers) {
+                System.out.println(s.getUser());
+                if (Objects.equals(s.getUser().getId(), user.getId())) {
+                    return true;
+                }
+            }
+        } catch (NullPointerException e) {
+            e.printStackTrace();
         }
         return false;
     }
 
     protected boolean passMatches(User user) {
-        for (Customer c : customers) {
-            if (Objects.equals(c.getUser().getPassword(), user.getPassword())) {
-                return true;
+        try {
+            for (Customer c : customers) {
+                if (Objects.equals(c.getUser().getPassword(), user.getPassword())) {
+                    return true;
+                }
             }
+        } catch (NullPointerException e) {
+            e.printStackTrace();
+        }
+        try {
+            for (Supplier s : suppliers) {
+                if (Objects.equals(s.getUser().getPassword(), user.getPassword())) {
+                    return true;
+                }
+            }
+        } catch (NullPointerException e) {
+            e.printStackTrace();
         }
         return false;
     }
@@ -141,6 +195,16 @@ public class LogOnController implements Initializable {
             }
         }
         return customer;
+    }
+
+    protected Supplier findSupplier(User user) {
+        Supplier supplier = null;
+        for (Supplier s : suppliers) {
+            if (Objects.equals(s.getUser().getId(), user.getId())) {
+                supplier = s;
+            }
+        }
+        return supplier;
     }
 
     protected void updateTryLabel() {

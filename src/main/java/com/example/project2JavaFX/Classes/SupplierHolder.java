@@ -15,7 +15,7 @@ public final class SupplierHolder {
         return INSTANCE;
     }
 
-    public void setCustomer(Supplier supplier) {
+    public void setSupplier(Supplier supplier) {
         this.supplier = supplier;
     }
 
@@ -45,5 +45,13 @@ public final class SupplierHolder {
 
     public BankAccount getBankAccount() {
         return this.bankAccount;
+    }
+
+    public void empty() {
+        this.supplier = null;
+        this.user = null;
+        this.personalDetails = null;
+        this.bankAccount = null;
+
     }
 }

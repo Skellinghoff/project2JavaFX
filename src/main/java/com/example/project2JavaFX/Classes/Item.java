@@ -6,8 +6,8 @@ import javafx.beans.property.SimpleIntegerProperty;
 import java.io.Serializable;
 
 public class Item implements Serializable {
-    private Product product;
-    private int count;
+    protected Product product;
+    protected int count;
 
     public Item(Product product, int count) {
         this.product = product;

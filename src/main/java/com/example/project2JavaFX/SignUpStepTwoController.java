@@ -56,7 +56,7 @@ public class SignUpStepTwoController implements Initializable {
             customerHolder.empty();
         }
         Stage stage = (Stage) nextButton.getScene().getWindow();
-        StageManagement.showOnSameStage(this, stage, "sign-up-step-three-view.fxml");
+        StageManagement.showOnSameStage(this, stage, "sign-up-step-three-controller.fxml");
     }
 
     @FXML

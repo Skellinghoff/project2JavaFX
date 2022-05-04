@@ -2,6 +2,8 @@ package com.example.project2JavaFX;
 
 import com.example.project2JavaFX.Classes.Customer;
 import com.example.project2JavaFX.Classes.CustomerHolder;
+import com.example.project2JavaFX.Classes.Supplier;
+import com.example.project2JavaFX.Classes.SupplierHolder;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
@@ -16,9 +18,18 @@ public class WelcomeController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        CustomerHolder customerHolder = CustomerHolder.getInstance();
-        Customer customer = customerHolder.getCustomer();
-        welcomeLabel.setText("Welcome " + customer.getPersonDetails().getName() + "!");
+        try {
+            Customer customer = CustomerHolder.getInstance().getCustomer();
+            welcomeLabel.setText("Welcome " + customer.getPersonDetails().getName() + "!");
+        } catch (NullPointerException e) {
+            System.out.println("no customer");
+        }
+        try {
+            Supplier supplier = SupplierHolder.getInstance().getSupplier();
+            welcomeLabel.setText("Welcome " + supplier.getPersonDetails().getName() + "!");
+        } catch (NullPointerException e) {
+            System.out.println("no supplier");
+        }
     }
 
     @FXML

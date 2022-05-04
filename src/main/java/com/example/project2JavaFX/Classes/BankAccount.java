@@ -11,8 +11,8 @@ import java.util.Random;
  */
 
 public class BankAccount implements Serializable {
-    private double balance;      // Account balance
-    private String creditCardNumber;
+    protected double balance;      // Account balance
+    protected String creditCardNumber;
 
     /**
      * This constructor sets the starting balance at 0.0.

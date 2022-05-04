@@ -7,12 +7,12 @@ import java.text.DecimalFormat;
 import java.util.Arrays;
 
 public class Order implements Serializable {
-    private final DecimalFormat dfMoney = FileManagement.dfMoney;
-    private Item[] items;
-    private String date;
-    private String customerID;
-    private String total;
-    private String authNumber;
+    protected final DecimalFormat dfMoney = FileManagement.dfMoney;
+    protected Item[] items;
+    protected String date;
+    protected String customerID;
+    protected String total;
+    protected String authNumber;
 
     public Order(Item[] items) {
         this.items = items;

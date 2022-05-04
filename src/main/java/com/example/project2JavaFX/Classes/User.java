@@ -3,8 +3,8 @@ package com.example.project2JavaFX.Classes;
 import java.io.Serializable;
 
 public class User implements Serializable {
-    private String id;
-    private String password;
+    protected String id;
+    protected String password;
 
     public User(String id, String password) {
         this.id = id;

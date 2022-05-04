@@ -41,7 +41,7 @@ public class MainMenuController implements Initializable {
     @FXML
     protected void onSelectItemsButton() throws IOException {
         Stage stage = (Stage) selectItemsButton.getScene().getWindow();
-        StageManagement.showOnSameStage(this, stage, "select-items-view.fxml");
+        StageManagement.showOnSameStage(this, stage, "select-items-controller.fxml");
     }
 
     @FXML
@@ -54,7 +54,7 @@ public class MainMenuController implements Initializable {
     @FXML
     protected void onViewOrdersButton() throws IOException {
         Stage stage = (Stage) selectItemsButton.getScene().getWindow();
-        StageManagement.showOnSameStage(this, stage, "view-orders-view.fxml");
+        StageManagement.showOnSameStage(this, stage, "view-orders-controller.fxml");
 
     }
 
