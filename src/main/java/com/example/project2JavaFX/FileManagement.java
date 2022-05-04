@@ -38,7 +38,7 @@ public class FileManagement {
                 new Customer(
                         new User("customer0", "Customer0!"),
                         new PersonalDetails("customer0", "customer0, 0000, 0000, 0000", "What was your childhood nickname?", "customer0"),
-                        new BankAccount(dfMoney.format(0.00), "0000000000000000")),
+                        new BankAccount(dfMoney.format(new Random().nextDouble(1000, 1000000)), "0000000000000000")),
                 new Customer(
                         new User("customer1", "Customer1!"),
                         new PersonalDetails("customer1", "customer1, 1111, 1111, 1111", "What was your childhood nickname?", "customer1"),
@@ -74,7 +74,8 @@ public class FileManagement {
                 new Customer(
                         new User("customer9", "Customer9!"),
                         new PersonalDetails("customer9", "customer9, 9999, 9999, 9999", "What was your childhood nickname?", "customer9"),
-                        new BankAccount(dfMoney.format(new Random().nextDouble(1000, 1000000)), "9999999999999999"))
+                        new BankAccount(dfMoney.format(new Random().nextDouble(1000, 1000000)), "9999999999999999")
+                )
         };
 
 
@@ -203,7 +204,7 @@ public class FileManagement {
         writeCustomers(customerArrayList);
     }
 
-    public static void setProducts() throws IOException {
+    public static void setExampleProducts() throws IOException {
         FileOutputStream outStream = new FileOutputStream("Products.dat");
         ObjectOutputStream objectOutputFile = new ObjectOutputStream(outStream);
 
@@ -270,6 +271,20 @@ public class FileManagement {
                         new Random().nextInt(1, 10)
                 )
         };
+
+        for (Product product : products) {
+            objectOutputFile.writeObject(product);
+        }
+        objectOutputFile.close();
+
+        System.out.println("The serialized objects were written to the Products.dat file.");
+    }
+
+
+
+    public static void setProducts(Product[] products) throws IOException {
+        FileOutputStream outStream = new FileOutputStream("Products.dat");
+        ObjectOutputStream objectOutputFile = new ObjectOutputStream(outStream);
 
         for (Product product : products) {
             objectOutputFile.writeObject(product);

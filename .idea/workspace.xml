@@ -5,25 +5,28 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="aa6e5e62-8ec1-40b5-9b58-7066bfd83f71" name="Changes" comment="kjhg">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/project2JavaFX/Classes/UserType.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Customers.dat" beforeDir="false" afterPath="$PROJECT_DIR$/Customers.dat" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Products.dat" beforeDir="false" afterPath="$PROJECT_DIR$/Products.dat" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Suppliers.dat" beforeDir="false" afterPath="$PROJECT_DIR$/Suppliers.dat" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/project2JavaFX/COSApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/project2JavaFX/COSApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/project2JavaFX/Classes/BankAccount.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/project2JavaFX/Classes/BankAccount.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/project2JavaFX/Classes/Customer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/project2JavaFX/Classes/Customer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/project2JavaFX/Classes/Item.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/project2JavaFX/Classes/Item.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/project2JavaFX/Classes/Order.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/project2JavaFX/Classes/Order.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/project2JavaFX/Classes/PersonalDetails.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/project2JavaFX/Classes/PersonalDetails.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/project2JavaFX/Classes/Product.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/project2JavaFX/Classes/Product.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/project2JavaFX/Classes/Supplier.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/project2JavaFX/Classes/Supplier.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/project2JavaFX/Classes/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/project2JavaFX/Classes/User.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/project2JavaFX/FileManagement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/project2JavaFX/FileManagement.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/project2JavaFX/LogOnController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/project2JavaFX/LogOnController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/project2JavaFX/MakeOrderController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/project2JavaFX/MakeOrderController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/project2JavaFX/ProcessOrderController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/project2JavaFX/ProcessOrderController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/project2JavaFX/SelectItemsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/project2JavaFX/SelectItemsController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/project2JavaFX/ShipOrderController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/project2JavaFX/ShipOrderController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/project2JavaFX/OPSApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/project2JavaFX/OPSApplication.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/project2JavaFX/SupplierMainMenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/project2JavaFX/SupplierMainMenuController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/project2JavaFX/ViewStockController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/project2JavaFX/ViewStockController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/project2JavaFX/process-order-controller.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/project2JavaFX/process-order-controller.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/project2JavaFX/supplier-main-menu-controller.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/project2JavaFX/supplier-main-menu-controller.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/project2JavaFX/view-stock-controller.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/project2JavaFX/view-stock-controller.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/project2JavaFX/ViewOrdersController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/project2JavaFX/ViewOrdersController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/project2JavaFX/view-orders-controller.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/project2JavaFX/view-orders-controller.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,6 +42,7 @@
         <option value="Interface" />
         <option value="FxmlFile" />
         <option value="Class" />
+        <option value="Enum" />
       </list>
     </option>
   </component>
@@ -101,8 +105,8 @@
       <recent name="com.example.project2JavaFX" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.com.example.project2JavaFX.OPSApplication">
-    <configuration name="com.example.project2JavaFX.COSApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="Application.OPSApplication">
+    <configuration name="COSApplication" type="Application" factoryName="Application" temporary="true">
       <option name="MAIN_CLASS_NAME" value="com.example.project2JavaFX.COSApplication" />
       <module name="project2JavaFX" />
       <extension name="coverage">
@@ -115,7 +119,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="com.example.project2JavaFX.OPSApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+    <configuration name="OPSApplication" type="Application" factoryName="Application" temporary="true">
       <option name="MAIN_CLASS_NAME" value="com.example.project2JavaFX.OPSApplication" />
       <module name="project2JavaFX" />
       <extension name="coverage">
@@ -128,10 +132,14 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <list>
+      <item itemvalue="Application.COSApplication" />
+      <item itemvalue="Application.OPSApplication" />
+    </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.com.example.project2JavaFX.OPSApplication" />
-        <item itemvalue="Application.com.example.project2JavaFX.COSApplication" />
+        <item itemvalue="Application.OPSApplication" />
+        <item itemvalue="Application.COSApplication" />
       </list>
     </recent_temporary>
   </component>
@@ -146,7 +154,7 @@
       <workItem from="1650872943715" duration="18762000" />
       <workItem from="1651460396630" duration="6511000" />
       <workItem from="1651466961408" duration="76585000" />
-      <workItem from="1651573191182" duration="28291000" />
+      <workItem from="1651573191182" duration="36626000" />
     </task>
     <task id="LOCAL-00001" summary="kjhg">
       <created>1651467454502</created>
@@ -197,7 +205,14 @@
       <option name="project" value="LOCAL" />
       <updated>1651625850116</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="kjhg">
+      <created>1651632118391</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1651632118391</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

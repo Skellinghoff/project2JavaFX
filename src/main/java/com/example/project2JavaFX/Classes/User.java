@@ -1,8 +1,11 @@
 package com.example.project2JavaFX.Classes;
 
+import java.io.Serial;
 import java.io.Serializable;
 
 public class User implements Serializable {
+    @Serial
+    private static final long serialVersionUID = 10L;
     protected String id;
     protected String password;
 

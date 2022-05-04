@@ -1,6 +1,8 @@
 package com.example.project2JavaFX;
 
 import com.example.project2JavaFX.Classes.*;
+import com.example.project2JavaFX.Classes.UserType;
+import com.example.project2JavaFX.Exceptions.NegativeStartingBalanceException;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
 import javafx.animation.Timeline;
@@ -17,11 +19,11 @@ import javafx.util.Duration;
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.net.URL;
-import java.util.Arrays;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
 public class LogOnController implements Initializable {
+    private UserType userType;
     @FXML
     private Label welcomeLabel;
     @FXML
@@ -35,8 +37,6 @@ public class LogOnController implements Initializable {
     private Button logInButton;
     @FXML
     private Button signUpButton;
-    private boolean isIDEmpty = true;
-    private boolean isPassEmpty = true;
     private Customer[] customers;
     private Supplier[] suppliers;
 
@@ -47,42 +47,62 @@ public class LogOnController implements Initializable {
         logInButton.setDisable(true);
 
         try {
-            suppliers = FileManagement.getSuppliers();
             customers = FileManagement.getCustomers();
-            System.out.println(Arrays.toString(suppliers));
-            System.out.println(Arrays.toString(customers));
         } catch (IOException | ClassNotFoundException | InvocationTargetException e) {
-            throw new RuntimeException(e);
+            System.out.println("Something went wrong opening Customers.dat");
+            System.out.println("Loading example data");
+            try {
+                FileManagement.setExampleCustomers();
+                customers = FileManagement.getCustomers();
+            } catch (IOException | NegativeStartingBalanceException | ClassNotFoundException | InvocationTargetException ex) {
+                ex.printStackTrace();
+            }
+        }
+
+        try {
+            suppliers = FileManagement.getSuppliers();
+        } catch (IOException | ClassNotFoundException | InvocationTargetException e) {
+            System.out.println("Something went wrong opening Suppliers.dat");
+            System.out.println("Loading example data");
+            try {
+                FileManagement.setExampleSuppliers();
+                suppliers = FileManagement.getSuppliers();
+            } catch (IOException | ClassNotFoundException | InvocationTargetException ex) {
+                ex.printStackTrace();
+            }
         }
     }
 
     @FXML
-    protected void onSignUpButton() throws IOException {
+    private void onSignUpButton() throws IOException {
         Stage stage = (Stage) signUpButton.getScene().getWindow();
         StageManagement.showOnSameStage(this, stage, "sign-up-step-one-controller.fxml");
     }
 
     @FXML
-    protected void onLogInButton() throws IOException {
-        String idString = idTextField.getText();
-        String passString = passPasswordField.getText();
-        User tempUser = new User(idString, passString);
+    private void onLogInButton() throws IOException {
         CustomerHolder customerHolder = CustomerHolder.getInstance();
         SupplierHolder supplierHolder = SupplierHolder.getInstance();
 
+        String idString = idTextField.getText();
+        String passString = passPasswordField.getText();
+        User tempUser = new User(idString, passString);
+        this.userType = idMatches(tempUser);
 
-        if (idMatches(tempUser)) {
+        if (this.userType != UserType.INVALID) {
             System.out.println(tempUser.getId() + " does exist.");
             if (passMatches(tempUser)) {
-                String ans = supplierOrCustomer(tempUser);
-                if (ans.equals("Customer")) {
-                    Customer customer = findCustomer(tempUser);
-                    customerHolder.setCustomer(customer);
-                    supplierHolder.empty();
-                } else if (ans.equals("Supplier")) {
-                    Supplier supplier = findSupplier(tempUser);
-                    supplierHolder.setSupplier(supplier);
-                    customerHolder.empty();
+                switch (this.userType) {
+                    case CUSTOMER -> {
+                        Customer customer = findCustomer(tempUser);
+                        customerHolder.setCustomer(customer);
+                        supplierHolder.empty();
+                    }
+                    case SUPPLER -> {
+                        Supplier supplier = findSupplier(tempUser);
+                        supplierHolder.setSupplier(supplier);
+                        customerHolder.empty();
+                    }
                 }
                 Stage stage = (Stage) signUpButton.getScene().getWindow();
                 StageManagement.showOnSameStage(this, stage, "security-question-controller.fxml");
@@ -99,95 +119,61 @@ public class LogOnController implements Initializable {
         }
     }
 
-    private String supplierOrCustomer(User user) {
-        for (Customer c : customers) {
-            if (Objects.equals(c.getUser().getId(), user.getId())) {
-                return "Customer";
-            }
-        }
-        for (Supplier s : suppliers) {
-            if (Objects.equals(s.getUser().getId(), user.getId())) {
-                return "Supplier";
-            }
-        }
-
-        return "N";
-
-    }
-
     @FXML
-    protected void onKeyTypedIDTextField() {
-        String id_string = idTextField.getText();
-        isIDEmpty = id_string.isBlank();
+    private void onKeyTypedIDTextField() {
         enableLogInButton();
-        System.out.println("isIDEmpty: " + isIDEmpty);
 
     }
 
     @FXML
-    protected void onKeyTypedPassPasswordField() {
-        String pass_string = passPasswordField.getText();
-        isPassEmpty = pass_string.isBlank();
+    private void onKeyTypedPassPasswordField() {
         enableLogInButton();
-        System.out.println("isPassEmpty: " + isPassEmpty);
     }
 
-    protected void enableLogInButton() {
-        logInButton.setDisable(isIDEmpty || isPassEmpty);
+    private void enableLogInButton() {
+        logInButton.setDisable(idTextField.getText().isEmpty() || passPasswordField.getText().isEmpty());
     }
 
     @FXML
-    protected void onCancelButton() {
+    private void onCancelButton() {
         System.out.println("Application Closed.");
         javafx.application.Platform.exit();
     }
 
-    protected boolean idMatches(User user) {
-        try {
-            for (Customer c : customers) {
-                if (Objects.equals(c.getUser().getId(), user.getId())) {
-                    return true;
-                }
+    private UserType idMatches(User user) {
+        for (Customer c : customers) {
+            if (Objects.equals(c.getUser().getId(), user.getId())) {
+                return UserType.CUSTOMER;
             }
-        } catch (NullPointerException e) {
-            e.printStackTrace();
         }
-        try {
-            for (Supplier s : suppliers) {
-                System.out.println(s.getUser());
-                if (Objects.equals(s.getUser().getId(), user.getId())) {
-                    return true;
-                }
+        for (Supplier s : suppliers) {
+            if (Objects.equals(s.getUser().getId(), user.getId())) {
+                return UserType.SUPPLER;
             }
-        } catch (NullPointerException e) {
-            e.printStackTrace();
         }
-        return false;
+        return UserType.INVALID;
     }
 
-    protected boolean passMatches(User user) {
-        try {
-            for (Customer c : customers) {
-                if (Objects.equals(c.getUser().getPassword(), user.getPassword())) {
-                    return true;
+    private boolean passMatches(User user) {
+        switch (this.userType) {
+            case CUSTOMER -> {
+                for (Customer c : customers) {
+                    if (Objects.equals(c.getUser().getPassword(), user.getPassword())) {
+                        return true;
+                    }
                 }
             }
-        } catch (NullPointerException e) {
-            e.printStackTrace();
-        }
-        try {
-            for (Supplier s : suppliers) {
-                if (Objects.equals(s.getUser().getPassword(), user.getPassword())) {
-                    return true;
+            case SUPPLER -> {
+                for (Supplier s : suppliers) {
+                    if (Objects.equals(s.getUser().getPassword(), user.getPassword())) {
+                        return true;
+                    }
                 }
             }
-        } catch (NullPointerException e) {
-            e.printStackTrace();
-        }
-        return false;
+        }   return false;
     }
 
-    protected Customer findCustomer(User user) {
+    private Customer findCustomer(User user) {
         Customer customer = null;
         for (Customer c : customers) {
             if (Objects.equals(c.getUser().getId(), user.getId())) {
@@ -197,7 +183,7 @@ public class LogOnController implements Initializable {
         return customer;
     }
 
-    protected Supplier findSupplier(User user) {
+    private Supplier findSupplier(User user) {
         Supplier supplier = null;
         for (Supplier s : suppliers) {
             if (Objects.equals(s.getUser().getId(), user.getId())) {
@@ -207,7 +193,7 @@ public class LogOnController implements Initializable {
         return supplier;
     }
 
-    protected void updateTryLabel() {
+    private void updateTryLabel() {
         tries -= 1;
         if (tries == 0) {
             StageManagement.createDialog("Too many log in attempts!","Program terminating...", true);
@@ -218,7 +204,7 @@ public class LogOnController implements Initializable {
         tryLabel.setText("Tries Left: " + tries);
     }
 
-    protected void flashWelcomeLabel() {
+    private void flashWelcomeLabel() {
         Timeline timeline = new Timeline(
                 new KeyFrame(Duration.seconds(0), new KeyValue(welcomeLabel.textFillProperty(), Color.RED)),
                 new KeyFrame(Duration.seconds(0.25), new KeyValue(welcomeLabel.textFillProperty(), Color.BLACK))
@@ -228,5 +214,4 @@ public class LogOnController implements Initializable {
         timeline.play();
 
     }
-
 }

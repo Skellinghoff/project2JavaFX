@@ -15,4 +15,5 @@ module com.example.project2JavaFX {
     exports com.example.project2JavaFX.Exceptions;
     exports com.example.project2JavaFX.Classes;
     opens com.example.project2JavaFX.Classes to javafx.fxml;
+
 }

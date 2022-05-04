@@ -2,11 +2,17 @@ package com.example.project2JavaFX.Classes;
 
 import com.example.project2JavaFX.FileManagement;
 
+import java.io.IOException;
+import java.io.Serial;
 import java.io.Serializable;
+import java.lang.reflect.InvocationTargetException;
 import java.text.DecimalFormat;
 import java.util.Arrays;
+import java.util.Objects;
 
 public class Order implements Serializable {
+    @Serial
+    private static final long serialVersionUID = 4L;
     protected final DecimalFormat dfMoney = FileManagement.dfMoney;
     protected Item[] items;
     protected String date;
@@ -101,8 +107,26 @@ public class Order implements Serializable {
     public String getStatus() {
         return status;
     }
-
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    public void updateProducts(String status) throws IOException, ClassNotFoundException, InvocationTargetException {
+        Product[] products = FileManagement.getProducts();
+
+        for (Item item : this.items) {
+            for (Product product : products) {
+                if (Objects.equals(item.getProduct().getName(), product.getName())) {
+                    if (Objects.equals(status, "Reserved")) {
+                        product.setStockAvailable(product.getStockAvailable() - item.getCount());
+                        product.setStockReserved(product.getStockReserved() + item.getCount());
+                    } else if (Objects.equals(status, "Shipped")) {
+                        product.setStockReserved(product.getStockReserved() - item.getCount());
+                        product.setStockTotal(product.getStockTotal() - item.getCount());
+                    }
+                }
+            }
+        }
+        FileManagement.setProducts(products);
     }
 }

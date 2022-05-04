@@ -3,15 +3,20 @@ package com.example.project2JavaFX.Classes;
 import com.example.project2JavaFX.FileManagement;
 
 import java.io.IOException;
+import java.io.Serial;
 import java.io.Serializable;
 import java.lang.reflect.InvocationTargetException;
 import java.util.Arrays;
 
 public class Customer implements Serializable {
+    @Serial
+    private static final long serialVersionUID = 2L;
     protected User user;
     protected PersonalDetails personalDetails;
     protected BankAccount bankAccount;
     protected Order[] orders;
+
+    private final UserType userType = UserType.CUSTOMER;
 
     public Customer(User user, PersonalDetails personalDetails, BankAccount bankAccount) {
         this.user = user;
@@ -73,5 +78,9 @@ public class Customer implements Serializable {
         } catch (IOException | ClassNotFoundException | InvocationTargetException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    public UserType getUserType() {
+        return userType;
     }
 }

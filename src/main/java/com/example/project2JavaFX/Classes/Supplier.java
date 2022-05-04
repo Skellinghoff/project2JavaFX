@@ -1,6 +1,11 @@
 package com.example.project2JavaFX.Classes;
 
+import java.io.Serial;
+
 public class Supplier extends Customer {
+    @Serial
+    private static final long serialVersionUID = 8L;
+    private final UserType userType = UserType.SUPPLER;
 
     public Supplier(User user, PersonalDetails personalDetails, BankAccount bankAccount) {
         this.user = user;

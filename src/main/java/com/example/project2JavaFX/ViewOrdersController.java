@@ -28,6 +28,8 @@ public class ViewOrdersController implements Initializable {
     private TableColumn<Order, String> quantitiesColumn;
     @FXML
     private TableColumn<Order, String> totalsColumn;
+    @FXML
+    private TableColumn<Order, String> orderStatusColumn;
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         initialize();
@@ -38,7 +40,7 @@ public class ViewOrdersController implements Initializable {
         CustomerHolder customerHolder = CustomerHolder.getInstance();
         customer = customerHolder.getCustomer();
         orders = customer.getOrders();
-        long max = 2;
+        long max = 0;
         for (Order order : orders) {
             String str = order.getItemsString();
             long count = str.chars().filter(ch -> ch == '\n').count();
@@ -50,6 +52,7 @@ public class ViewOrdersController implements Initializable {
         productsColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getItemsString()));
         quantitiesColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getQuantitiesString()));
         totalsColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getTotalsString()));
+        orderStatusColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getStatus()));
 
         orderTableView.setItems(FXCollections.observableArrayList(orders));
         orderTableView.setFixedCellSize(max * 25);

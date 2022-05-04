@@ -1,19 +1,22 @@
 package com.example.project2JavaFX.Classes;
 
+import java.io.Serial;
 import java.io.Serializable;
 import java.text.DecimalFormat;
 
 public class Product implements Serializable {
-    protected String name;
-    protected String description;
-    protected double regularPrice;
-    protected double salePercent = 0.00;
-    protected boolean onSale = false;
-    protected double salePrice;
-    protected int stockReserved;
-    protected int stockAvailable;
+    @Serial
+    private static final long serialVersionUID = 7L;
+    private String name;
+    private String description;
+    private double regularPrice;
+    private double salePercent = 0.00;
+    private boolean onSale = false;
+    private double salePrice;
+    private int stockReserved;
+    private int stockAvailable;
 
-    protected int totalStock;
+    private int totalStock;
 
     public Product(String name, String description, double regularPrice, int stockReserved, int stockAvailable) {
         this.name = name;
@@ -132,11 +135,11 @@ public class Product implements Serializable {
         return String.valueOf(totalStock);
     }
 
-    public int getTotalStock() {
+    public int getStockTotal() {
         return totalStock;
     }
 
-    public void setTotalStock(int totalStock) {
+    public void setStockTotal(int totalStock) {
         this.totalStock = totalStock;
     }
 }

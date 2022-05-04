@@ -22,10 +22,11 @@
    <children>
       <TableView fx:id="orderTableView" nodeOrientation="LEFT_TO_RIGHT" prefHeight="420.0" prefWidth="759.0" GridPane.columnSpan="2147483647" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
          <columns>
-            <TableColumn fx:id="dateColumn" prefWidth="245.0" text="Date" />
-            <TableColumn fx:id="productsColumn" prefWidth="277.0" text="Products" />
-            <TableColumn fx:id="quantitiesColumn" prefWidth="113.0" text="Quantites" />
-            <TableColumn fx:id="totalsColumn" prefWidth="123.0" text="Totals" />
+            <TableColumn fx:id="dateColumn" prefWidth="186.0" text="Date" />
+            <TableColumn fx:id="orderStatusColumn" prefWidth="190.0" text="Order Staus" />
+            <TableColumn fx:id="productsColumn" prefWidth="194.0" text="Products" />
+            <TableColumn fx:id="quantitiesColumn" prefWidth="104.0" text="Quantites" />
+            <TableColumn fx:id="totalsColumn" prefWidth="84.0" text="Totals" />
          </columns>
       </TableView>
       <ButtonBar prefHeight="40.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2">

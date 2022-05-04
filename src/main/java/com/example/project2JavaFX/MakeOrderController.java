@@ -11,6 +11,7 @@ import javafx.scene.control.*;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
 import java.net.URL;
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
@@ -130,11 +131,12 @@ public class MakeOrderController implements Initializable {
             customer.addOrder(order);
 
             OrderHolder.getInstance().setOrder(null);
+            order.updateProducts("Reserved");
 
             Stage stage = (Stage) cancelButton.getScene().getWindow();
             StageManagement.showOnSameStage(this, stage, "main-controller.fxml");
 
-        } catch (NegativeWithdrawalException | OverdrawException e) {
+        } catch (NegativeWithdrawalException | OverdrawException | ClassNotFoundException | InvocationTargetException e) {
             TextInputDialog dialog = new TextInputDialog();
             dialog.setTitle("New Credit Card");
             dialog.setHeaderText("Something went wrong...");

@@ -13,8 +13,7 @@ import java.util.Objects;
 public class COSApplication extends Application {
     @Override
     public void start(Stage primaryStage) throws IOException, NegativeStartingBalanceException {
-        FileManagement.setExampleCustomers();
-        FileManagement.setProducts();
+//        FileManagement.setExampleProducts();
         Parent parent = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("log-on-controller.fxml")));
         Scene scene = new Scene(parent);
         primaryStage.setTitle("COS");

@@ -24,16 +24,15 @@ public class SupplierMainMenuController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
     }
-
     @FXML
     public void onProcessOrderButton() throws IOException {
-        Stage stage = (Stage) viewStockButton.getScene().getWindow();
+        Stage stage = (Stage) processOrderButton.getScene().getWindow();
         StageManagement.showOnSameStage(this, stage, "process-order-controller.fxml");
     }
 
     @FXML
     public void onShipOrderButton() throws IOException {
-        Stage stage = (Stage) viewStockButton.getScene().getWindow();
+        Stage stage = (Stage) shipOrderButton.getScene().getWindow();
         StageManagement.showOnSameStage(this, stage, "ship-order-controller.fxml");
     }
 

@@ -2,6 +2,7 @@ package com.example.project2JavaFX.Classes;
 
 import com.example.project2JavaFX.Exceptions.*;
 
+import java.io.Serial;
 import java.io.Serializable;
 import java.text.DecimalFormat;
 import java.util.Random;
@@ -11,6 +12,8 @@ import java.util.Random;
  */
 
 public class BankAccount implements Serializable {
+    @Serial
+    private static final long serialVersionUID = 1L;
     protected double balance;      // Account balance
     protected String creditCardNumber;
 

@@ -3,9 +3,12 @@ package com.example.project2JavaFX.Classes;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 
+import java.io.Serial;
 import java.io.Serializable;
 
 public class Item implements Serializable {
+    @Serial
+    private static final long serialVersionUID = 3L;
     protected Product product;
     protected int count;
     protected int maxCount;
