@@ -47,9 +47,8 @@ public class SelectItemsController implements Initializable {
         }
         items = new Item[products.length];
         for (int i = 0; i < products.length; i++) {
-            items[i] = new Item(products[i], 0);
+            items[i] = new Item(products[i]);
         }
-
 
         productName.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getProduct().getName()));
         wrapText(productName, true);
@@ -63,12 +62,9 @@ public class SelectItemsController implements Initializable {
             public TableCell<Item, Item> call(TableColumn<Item, Item> param) {
 
                 return new TableCell<>() {
-
                     private final Spinner<Integer> count;
-
                     private final SpinnerValueFactory.IntegerSpinnerValueFactory valueFactory;
                     private final ChangeListener<Number> valueChangeListener;
-
                     {
                         valueFactory = new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 10);
                         count = new Spinner<>(valueFactory);
@@ -98,6 +94,7 @@ public class SelectItemsController implements Initializable {
                         if (empty || item == null) {
                             count.setVisible(false);
                         } else {
+                            valueFactory.maxProperty().bind(item.getMaxCount());
                             valueFactory.setValue(item.getCount());
                             item.itemCountProperty().addListener(valueChangeListener);
                             count.setVisible(true);

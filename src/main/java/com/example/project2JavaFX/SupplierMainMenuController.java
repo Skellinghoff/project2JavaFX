@@ -1,8 +1,7 @@
 package com.example.project2JavaFX;
 
-import com.example.project2JavaFX.Classes.Customer;
-import com.example.project2JavaFX.Classes.CustomerHolder;
-import javafx.event.ActionEvent;
+import com.example.project2JavaFX.Classes.Supplier;
+import com.example.project2JavaFX.Classes.SupplierHolder;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -26,18 +25,27 @@ public class SupplierMainMenuController implements Initializable {
 
     }
 
-    public void onSelectItemsButton(ActionEvent event) {
+    @FXML
+    public void onProcessOrderButton() throws IOException {
+        Stage stage = (Stage) viewStockButton.getScene().getWindow();
+        StageManagement.showOnSameStage(this, stage, "process-order-controller.fxml");
     }
 
-    public void onMakeOrderButton(ActionEvent event) {
+    @FXML
+    public void onShipOrderButton() throws IOException {
+        Stage stage = (Stage) viewStockButton.getScene().getWindow();
+        StageManagement.showOnSameStage(this, stage, "ship-order-controller.fxml");
     }
 
-    public void onViewOrdersButton(ActionEvent event) {
+    @FXML
+    public void onViewStockButton() throws IOException {
+        Stage stage = (Stage) viewStockButton.getScene().getWindow();
+        StageManagement.showOnSameStage(this, stage, "view-stock-controller.fxml");
     }
 
+    @FXML
     public void onLogoutButton() throws IOException {
-        CustomerHolder customerHolder = CustomerHolder.getInstance();
-        customerHolder.setCustomer(new Customer());
+        SupplierHolder.getInstance().setSupplier(new Supplier());
         Stage stage = (Stage) logOutButton.getScene().getWindow();
         StageManagement.showOnSameStage(this, stage, "log-on-controller.fxml");
     }

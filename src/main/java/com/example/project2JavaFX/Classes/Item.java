@@ -8,10 +8,11 @@ import java.io.Serializable;
 public class Item implements Serializable {
     protected Product product;
     protected int count;
-
-    public Item(Product product, int count) {
+    protected int maxCount;
+    public Item(Product product) {
         this.product = product;
-        this.count = count;
+        this.count = 0;
+        this.maxCount = product.getStockReserved();
     }
 
     @Override
@@ -37,6 +38,18 @@ public class Item implements Serializable {
 
     public void setCount(int count) {
         this.count = count;
+    }
+
+    public String getMaxCountString() {
+        return String.valueOf(maxCount);
+    }
+
+    public IntegerProperty getMaxCount() {
+        return new SimpleIntegerProperty(this.maxCount);
+    }
+
+    public void setMaxCount(int maxCount) {
+        this.maxCount = maxCount;
     }
 
     public String getItemTotal() {

@@ -13,6 +13,10 @@ public class Supplier extends Customer {
         this.personalDetails = personalDetails;
     }
 
+    public Supplier() {
+
+    }
+
     @Override
     public String toString() {
         if (bankAccount != null)

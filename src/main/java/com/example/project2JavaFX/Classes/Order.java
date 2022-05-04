@@ -14,8 +14,11 @@ public class Order implements Serializable {
     protected String total;
     protected String authNumber;
 
+    protected String status;
+
     public Order(Item[] items) {
         this.items = items;
+        this.status = "Ordered";
     }
     public Order() {
     }
@@ -93,5 +96,13 @@ public class Order implements Serializable {
 
     public void setAuthNumber(String authNumber) {
         this.authNumber = authNumber;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 }

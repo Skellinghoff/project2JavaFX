@@ -1,14 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ButtonBar?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.example.project2JavaFX.ViewStockController"
-            prefHeight="400.0" prefWidth="600.0">
-
-</AnchorPane>
+<GridPane hgap="15.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="789.0" vgap="15.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.project2JavaFX.ViewStockController">
+   <columnConstraints>
+      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+   </columnConstraints>
+   <rowConstraints>
+      <RowConstraints maxHeight="359.0" minHeight="10.0" prefHeight="359.0" vgrow="SOMETIMES" />
+      <RowConstraints maxHeight="195.0" minHeight="10.0" prefHeight="41.0" vgrow="SOMETIMES" />
+   </rowConstraints>
+   <children>
+      <TableView fx:id="productTableView" editable="true" fixedCellSize="25.0" prefHeight="336.0" prefWidth="691.0" GridPane.columnSpan="2147483647" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+         <columns>
+            <TableColumn fx:id="productColumn" editable="false" prefWidth="404.0" text="Name" />
+            <TableColumn fx:id="availableColumn" editable="false" prefWidth="119.0" text="Available" />
+            <TableColumn fx:id="reservedColumn" editable="false" prefWidth="120.0" text="Reserved" />
+            <TableColumn fx:id="quantityColumn" editable="false" prefWidth="115.0" text="Quantity" />
+         </columns>
+      </TableView>
+      <ButtonBar prefHeight="45.0" prefWidth="600.0" GridPane.rowIndex="1">
+         <buttons>
+            <Button mnemonicParsing="false" onAction="#onDoneButton" text="Done" />
+         </buttons>
+      </ButtonBar>
+   </children>
+   <padding>
+      <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+   </padding>
+</GridPane>

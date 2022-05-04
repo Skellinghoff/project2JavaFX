@@ -121,7 +121,6 @@ public class MakeOrderController implements Initializable {
         SimpleDateFormat formatter = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss");
         Date date = new Date();
         try {
-
             bankAccount.withdraw(grandTotal);
             String confirmationNumber = bankAccount.getConfirmationNumber();
             order.setAuthNumber(confirmationNumber);
